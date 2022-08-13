@@ -18,16 +18,19 @@
         $ node -v
         $ node -v                          #  node 버전 확인
         v16.16.0
-
+        <!-- EZEN-20@DESKTOP-A3DBMD8 MINGW64 /c/react_sypark/EZEN220806/LearnReact/React/rt03.Webpack (main)
+        $ node -v
+        v16.16.0
+        -->
         $ npm install -g npm@latest        #  npm 최신 버전 설치
 
         $ npm -v                           #  npm 버전 확인
-        8.13.2
+        8.16.0
 
         $ npx -v                           #  npx(=npm extension) 버전 확인
-        8.13.2
+        8.16.0
 
-
+      #####웹페이지 크롬으로 열고 npm사용법 보기
       ##################################
       # node 프로젝트 만들기
       ##################################
@@ -46,7 +49,10 @@
 
         $ pwd   # 현재 작업 디렉토리 확인
           /ES2015문법/ap06.ES2015문법-cli/es2015test
-
+        <!-- EZEN-20@DESKTOP-A3DBMD8 MINGW64 /c/react_sypark/EZEN220806/LearnReact/React/rt03.Webpack (main)
+        $ pwd
+        /c/react_sypark/EZEN220806/LearnReact/React/rt03.Webpack
+        -->
       ##################################
       # node 프로젝트 설정 초기화
       ##################################
@@ -142,7 +148,7 @@
 
           $ ls -a               # 현재 디렉토리의 파일 목록 조회
           ./  ../  node_modules/  package.json  package-lock.json
-
+<!--  -->
 
       ##################################
       # 폴더 구조 및 파일 확인
@@ -154,6 +160,14 @@
         \---src/
               \---ap06-01.js
 
+    ##################################
+    # node 프로젝트에 바벨 파일 만들기
+    ##################################
+      $ls-a
+
+      $touch .babelrc
+
+      $ ls -a
 
       ##################################
       # node 프로젝트에 src 작업 디렉토리 만들기
@@ -179,7 +193,7 @@
 
 
       ##################################
-      # ap06-01.js 실행하기
+      # ap06-01.js 실행하기 run start debugginr
       ##################################
       ap06-01.js 파일 안에서 F5 버튼을 눌러 실행한다.
 
@@ -200,7 +214,22 @@
       };
 
       getMessage('sejoong');
-
+      <!-- $ npx babel --presets=@babel/env src/ap06-01.js
+      npm WARN config global `--global`, `--local` are deprecated. Use `--location=global` instead.
+      SyntaxError: C:\react_sypark\EZEN220806\LearnReact\ES2015문법\ap06.ES2015문법-cli\es2015test\.babelrc: Error while parsing config - JSON5: invalid end of input at 1:1
+          at syntaxError (C:\react_sypark\EZEN220806\LearnReact\ES2015문법\ap06.ES2015문법-cli\es2015test\node_modules\json5\lib\parse.js:1083:17)
+          at invalidEOF (C:\react_sypark\EZEN220806\LearnReact\ES2015문법\ap06.ES2015문법-cli\es2015test\node_modules\json5\lib\parse.js:1032:12)
+          at Object.start (C:\react_sypark\EZEN220806\LearnReact\ES2015문법\ap06.ES2015문법-cli\es2015test\node_modules\json5\lib\parse.js:821:19)
+          at Object.parse (C:\react_sypark\EZEN220806\LearnReact\ES2015문법\ap06.ES2015문법-cli\es2015test\node_modules\json5\lib\parse.js:32:32)
+          at C:\react_sypark\EZEN220806\LearnReact\ES2015문법\ap06.ES2015문법-cli\es2015test\node_modules\@babel\core\lib\config\files\configuration.js:264:23
+          at C:\react_sypark\EZEN220806\LearnReact\ES2015문법\ap06.ES2015문법-cli\es2015test\node_modules\@babel\core\lib\config\files\utils.js:30:12
+          at Generator.next (<anonymous>)
+          at Function.<anonymous> (C:\react_sypark\EZEN220806\LearnReact\ES2015문법\ap06.ES2015문법-cli\es2015test\node_modules\@babel\core\lib\gensync-utils\async.js:27:3)
+          at Generator.next (<anonymous>)
+          at step (C:\react_sypark\EZEN220806\LearnReact\ES2015문법\ap06.ES2015문법-cli\es2015test\node_modules\gensync\index.js:261:32) {
+        lineNumber: 1,
+        columnNumber: 1
+      } 는 현재 파일에서 바벨 파일 지우기 아래다 다시만들어야함 -->
 
       ##################################
       # 트랜스컴파일 수행
@@ -256,6 +285,14 @@
       # packages.json 의 scripts 에 build 추가
       # "build": "npx babel src/ -d build/"
       ##################################
+      코드위치 6번줄
+      "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "npx babel src/ -d build/"
+        },
+      ##################################
+
+      ##################################
       $ ls -a               # 현재 디렉토리의 파일 목록 조회
       ./  ../  .babelrc  node_modules/  package.json  package-lock.json  src/
 
@@ -286,6 +323,13 @@
       # packages.json 의 scripts 에 start 추가
       #   ==> src 디렉토리의 소스 변경을 자동으로 감지하여 ES5 컴파일하는 설정.
       # "start": "nodemon --watch src/ --exec npm run build"
+      ##################################
+      packages.json파일에서 6번줄쪽에
+      "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "npx babel src/ -d build/",
+        "start": "nodemon --watch src/ --exec npm run build"
+      },
       ##################################
       $ ls -a               # 현재 디렉토리의 파일 목록 조회
       ./  ../  .babelrc  node_modules/  package.json  package-lock.json  src/
