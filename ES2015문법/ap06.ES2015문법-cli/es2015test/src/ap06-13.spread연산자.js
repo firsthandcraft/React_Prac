@@ -54,10 +54,41 @@ console.log(rest); // ["화진포", "송지호", "청초호"]
 
 //const east = ['U', 'K', 'T'];
 // const west = ['N', 'C', 'G'];
-//
 let [city1, ...cityrest] = [...east, ...west];
 
 //  [city1, ...cityrest] = ['U','K', 'T', 'N', 'C', 'G'];
 console.log(city1); //U
 console.log(cityrest); //['K', 'T', 'N', 'C', 'G']
 // ...cityrest: rest 연산자 , [...east, ...west] : spread 연산자
+
+//car2로 업데이트 된다.
+const car1 = {
+    type: 't1',
+    color: 'S1',
+    model: 2017
+};
+const car2 = {
+    type: 't2',
+    color: 'S2',
+    model: 2019
+};
+const { type } = car1;
+console.log(type); // t1
+const func = function ({ type }) {
+    console.log(type); // type 값은 무엇인가? t2
+};
+func({ ...car1, ...car2 });
+
+///교재 책 46페이지
+const moring = {
+    breakfast: '미역국',
+    lunch: '삼치구이'
+};
+const dinner = '스테이크';
+//
+
+const meals = {
+    ...moring,
+    dinner //dinner:dinner,
+};
+console.log(meals); //{breakfast: '미역국', lunch: '삼치구이', dinner: '스테이크'}

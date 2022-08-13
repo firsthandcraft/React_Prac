@@ -1,3 +1,13 @@
+"use strict";
+
+var _console;
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 /*
 
     스프레드 사용법을 학습한다.
@@ -19,4 +29,81 @@
         iterator를 생성해서 next()로 순회할 수 있는 자료구조가 이터러블
 
 */
-"use strict";
+//rest 연산자 vs spread 연산자
+var cities = ['서울', '부산', '제주'];
+console.log(cities[0], cities[1], cities[2]); // "서울", "부산", "제주"
+
+(_console = console).log.apply(_console, cities); // "서울", "부산", "제주"
+
+
+var east = ['U', 'K', 'T'];
+var west = ['N', 'C', 'G']; //---------------------
+//east.concat(west);
+//배열의 concat을쓸경우 east에 3개의 변수가 붙어있는데 west가 east의 끝에 붙여짐
+//east는 안바뀜 3개의 변수를 가지고 있다.
+// const countries = [...east, ...west]; //['U', 'K', 'T','N', 'C', 'G']
+// console.log(east);
+// console.log(west);
+// console.log(countries);
+// east = countries;
+// //불변객체를 바꿀수 있다.
+//---------------------
+
+var countries = [].concat(east, west); //['U', 'K', 'T','N', 'C', 'G']
+
+console.log(east);
+console.log(west);
+console.log(countries);
+var lakes = ['경포호', '화진포', '송지호', '청초호'];
+var first = lakes[0],
+    rest = lakes.slice(1); // ...rest : rest 연산자
+
+console.log(first); // "경포호"
+
+console.log(rest); // ["화진포", "송지호", "청초호"]
+//const east = ['U', 'K', 'T'];
+// const west = ['N', 'C', 'G'];
+
+var _ref = [].concat(east, west),
+    city1 = _ref[0],
+    cityrest = _ref.slice(1); //  [city1, ...cityrest] = ['U','K', 'T', 'N', 'C', 'G'];
+
+
+console.log(city1); //U
+
+console.log(cityrest); //['K', 'T', 'N', 'C', 'G']
+// ...cityrest: rest 연산자 , [...east, ...west] : spread 연산자
+//car2로 업데이트 된다.
+
+var car1 = {
+  type: 't1',
+  color: 'S1',
+  model: 2017
+};
+var car2 = {
+  type: 't2',
+  color: 'S2',
+  model: 2019
+};
+var type = car1.type;
+console.log(type); // t1
+
+var func = function func(_ref2) {
+  var type = _ref2.type;
+  console.log(type); // type 값은 무엇인가? t2
+};
+
+func(_objectSpread(_objectSpread({}, car1), car2)); ///교재 책 46페이지
+
+var moring = {
+  breakfast: '미역국',
+  lunch: '삼치구이'
+};
+var dinner = '스테이크'; //
+
+var meals = _objectSpread(_objectSpread({}, moring), {}, {
+  dinner: dinner //dinner:dinner,
+
+});
+
+console.log(meals); //{breakfast: '미역국', lunch: '삼치구이', dinner: '스테이크'}

@@ -69,8 +69,8 @@ func1(car);
 //한줄로가능
 //const {type ,color, gear}= car
 
-const func2 = function( car ) {
-  console.log(car.type); // ?
-  console.log(car.color); // ?}
-
-// func2( car );
+const func2 = function (car) {
+    console.log(car.type); // ?
+    console.log(car.color); // ?}
+};
+func2(car);

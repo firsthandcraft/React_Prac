@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /*
  (구조) 분해 할당에 대해서 알아본다.
@@ -41,14 +41,9 @@ var x4 = points[0],
 console.log(x4, w4); //20 undefined
 //배열안에 함수를 넣을 수 있다. 함수는 값이기 때문
 
-var _ref = [
-        20,
-        30,
-        40,
-        function () {
-            return console.log('xxxx');
-        }
-    ],
+var _ref = [20, 30, 40, function () {
+  return console.log('xxxx');
+}],
     x5 = _ref[0],
     w5 = _ref[3];
 console.log(x5, w5); //20 () => console.log('xxxx')
@@ -57,9 +52,9 @@ w5(); //xxxx
 //객체의 분해 할당
 
 var car = {
-    type: 't',
-    color: 'S',
-    model: 2021
+  type: 't',
+  color: 'S',
+  model: 2021
 }; //ES5
 
 var type1 = car.type;
@@ -82,9 +77,20 @@ var type2 = car.type,
 console.log(type2, color2, model2, gear2); //t S 2021 undefined
 
 var func1 = function func1(_ref2) {
-    var type = _ref2.type,
-        color = _ref2.color;
-    console.log(type); //t
+  var type = _ref2.type,
+      color = _ref2.color;
+  console.log(type); //t
 
-    console.log(color); //s
+  console.log(color); //s
 };
+
+func1(car); //한줄로가능
+//const {type ,color, gear}= car
+
+var func2 = function func2(car) {
+  console.log(car.type); // ?
+
+  console.log(car.color); // ?}
+};
+
+func2(car);

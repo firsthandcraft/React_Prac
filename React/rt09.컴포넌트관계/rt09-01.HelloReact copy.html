@@ -99,7 +99,8 @@ function HelloReact(props) {
 
 
   // 컴포넌트의 상태값 설정
-  const [memory, setMemory] = useState('Hello, State !!!'); // 상태값이 기본타입인 경우
+  const [변수명, set변수명] = useState('기본값'); // 상태값이 기본타입인 경우
+  const [state, setState] = useState({ id: 0, name: '', age: 0, }); // 상태값이 참조타입 경우
 
   // ref 만들기.
   // const refInput = useRef();
@@ -136,15 +137,13 @@ function HelloReact(props) {
   // JSX로 화면 만들기
   return (
     <div>
-        Hello, React!!! <br/>
-        {memory}  <br/>
-        {props.name}
+        Hello, React!!!
     </div>
   )
 }
 
     //만든 컴포넌트를 화면에 붙인다.
-    ReactDOM.render(<HelloReact name={'Hello, Props !!!'}></HelloReact>,document.getElementById("app"))
+    ReactDOM.render(<HelloReact></HelloReact>,document.getElementById("app"))
 </script>
 
 
