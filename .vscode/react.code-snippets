@@ -113,7 +113,7 @@
     "React Functional Component": {
         "prefix": "rfc",
         "body": [
-            "// import React, { useState, useEffect, useRef, useCallback, useMemo, Fragment, forwardRef, useImperativeHandle } from 'react';",
+            "// import React, { useState, useEffect, useRef,useReducer ,useCallback, useMemo, Fragment, forwardRef, useImperativeHandle } from 'react';",
             "// import PropTypes from 'prop-types';",
             "// import Styled from 'styled-components';",
             "// import { useDispatch, useSelector } from 'react-redux';",
@@ -178,7 +178,7 @@
             "  // JSX로 화면 만들기",
             "  return (",
             "    <div>",
-            "      ${2:}",
+            "      ${1:${TM_FILENAME_BASE}}",
             "    </div>",
             "  )",
             "}",

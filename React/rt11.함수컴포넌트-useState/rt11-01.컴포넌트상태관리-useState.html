@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
-
-    <link rel="stylesheet" href="../css/reset.css"/>
-
-</head>
-
-<body>
-    <pre>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible"
+            content="ie=edge" />
+        <title>Document</title>
+        <link rel="stylesheet"
+            href="../css/reset.css" />
+    </head>
+    <body>
+        <pre>
         함수 컴포넌트
             useState() 훅
             useEffect() 훅
@@ -51,14 +50,13 @@
             - state up: 자식 -> 부모 데이터 전달
         </div>
     </pre>
-    <div>
-        <img src="../images/stateupdonw.png" alt="" style="display: inline-block;">
-    </div>
-
-    <hr>
-
-    <xmp>
-
+        <div>
+            <img src="../images/stateupdonw.png"
+                alt=""
+                style="display: inline-block;">
+        </div>
+        <hr>
+        <xmp>
         1. ExampleContainer, Example 컴포넌를 만든다.
         2. ExampleContainer 컴포넌트의 상태값 만들기
             const [count, setCount] = useState(0); // "count"라는 새 상태 변수를 선언합니다
@@ -72,12 +70,12 @@
             </div>
         5.Example 컴포넌트의 JSX
             <div>
-                <p>
+                <div>
                     <p>You clicked {count} times</p>
                     <button onClick={(event) => alert("count 상태값을 바꾸는 코드를 작성하시오.") }>
                         Click me
                     </button>
-                </p>
+                </div>
                 <p> age: { /* age 상태값이 출력되게 하시오. */ }</p>
                 <p> fruit: { /* fruit 상태값이 출력되게 하시오. */ }</p>
                 <p> { /* todos 상태값이 출력되게 하시오. */ }</p>
@@ -85,15 +83,118 @@
         6. Example 컴포넌트에 age, fruit, todos 상태값이 출력되게 하시오.
         7. 부모 컴포넌트, ExampleContainer 의 count 상태값을 바꾸는 코드를 작성한다.
     </xmp>
-    <hr>
-
-    <div id="app">
-    </div>
-</body>
-
+        <hr>
+        <div id="app">
+        </div>
+    </body>
 </html>
+<!-- reactscript -->
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"
+    crossorigin>
+        /* 자바스크립트로 컴파일러. ES6-->ES5, JSX-->ES5 */
+    </script>
+<script src="https://unpkg.com/core-js-bundle/index.js"
+    crossorigin>
+        /* Babel v7.4.0 이후부터 Babel Polyfill은 deprecated. 대신 core-js 스크립트를 사용 */
+    </script>
+<script src="unpkg.com/regenerator-runtime/runtime.js"
+    crossorigin>
+        /* Babel v7.4.0 이후부터 Babel Polyfill은 deprecated. 대신 regenerator-runtime 스크립트를 사용 */
+    </script>
+<script src="http://unpkg.com/react@17/umd/react.development.js"
+    crossorigin>
+        /* import React, { Component, PureComponent } from 'react' */
+    </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.8.1/prop-types.js"
+    crossorigin>
+    </script>
+<script src="http://unpkg.com/react-dom@17/umd/react-dom.development.js"
+    crossorigin>
+        /* import ReactDOM from 'react-dom' */
+    </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-redux/7.2.8/react-redux.js"
+    crossorigin>
+        /*  import ReactRedux, {Provider, useDispatch, useSelector} from 'react-redux' */
+    </script>
+<script src="http://unpkg.com/react-router-dom@6/umd/react-router-dom.development.js"
+    crossorigin>
+        /*  import ReactRouterDOM, {BrowserRouter, Routes, Route, Link, NavLink, useParams, useLocation, useHistory, useRouteMatch} from 'react-router-dom' */
+    </script>
+<script src="https://unpkg.com/immer"
+    crossorigin>
+        /* 불변객체 state를 조작하는 라이브러리. import immer from 'immer' */
+    </script>
+<script type="text/babel">
 
+    const { useState, useEffect, useRef, useCallback, useReducer, useMemo, Fragment } = React;
 
+    //1. ComponentContaine를 화면에 붙인다.
+    ReactDOM.render(<ExampleContainer></ExampleContainer>, document.getElementById("app"));
+    //
 
+    function ExampleContainer({
+        setAge,
+        setFruits,
+        ...props
+    }) {
+        // 컴포넌트의 상태값 설정
+        //  const [변수명, set변수명] = useState('기본값'); // 상태값이 기본타입인 경우
+        const [count, setCount] = useState(0); // 상태값이 기본타입인 경우
+        const callback = useCallback((newcount) => {
+            setCount(newcount);
+        }, [count]);
 
-
+        // JSX로 화면 만들기
+        return (
+            <div>
+                ExampleContainer
+
+                <Example
+                    count={count}
+                    callback={callback}
+                ></Example>
+
+            </div>
+        )
+    }
+    function Example({
+        callback,
+        count,
+        ...props
+    }) {
+
+        // 컴포넌트의 상태값 설정
+        //  const [변수명, set변수명] = usetate('기본값'); // 상태값이 기본타입인 경우
+        //REDUCT를 사용할예정이라 usereducer안씀
+        const [age, setAge] = useState(42); // 상태값이 기본타입인 경우
+        const [fruit, setFruit] = useState('banana'); // 상태값이 기본타입인 경우
+        const [todos, setTodos] = useState([{ text: 'Learn Hooks' }]); // 상태값이 기본타입인 경우
+
+        // 이벤트 핸들러 작성.
+        const handler = () => {
+            // 이벤트 핸들러는 화살표 함수로 만든다
+            console.log(window.event.target);
+            //debugger;
+            callback(count + 1);
+        };
+
+        // JSX로 화면 만들기
+        //   <button onClick={(event) => alert("count 상태값을 바꾸는 코드를 작성하시오.") }>
+        //             Click me
+        //         </button>
+        return (
+            <div>
+                <div>
+                    <p>You clicked {count} times</p>
+                    <button onClick={handler}>
+                        Click me
+                    </button>
+                </div>
+                <p> age: { /* age 상태값이 출력되게 하시오. */ age}</p>
+                <p> fruit: { /* fruit 상태값이 출력되게 하시오. */fruit}</p>
+                <p> todos:{ /* todos 상태값이 출력되게 하시오. */todos && todos.map((todo, index) => <li key={index}>{todo.text}</li>)}</p>
+            </div>
+        )
+    }
+
+</script>
