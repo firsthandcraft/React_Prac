@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>조건부 렌더링</title>
 
-    <link rel="stylesheet" href="../css/reset.css"/>
-</head>
+    <link rel="stylesheet" href="../css/reset.css" />
+  </head>
 
-<body>
+  <body>
     <xmp>
         JSX 안에서 조건부 렌더링 방법을 학습한다.
 
@@ -65,13 +64,80 @@
 
         ReactDOM.render( <MailboxContainer />, document.getElementById('app') );
     </xmp>
-    <hr>
+    <hr />
 
     <div id="app"></div>
-</body>
-
+  </body>
 </html>
 
+<script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin>
+  /* 자바스크립트로 컴파일러. ES6-->ES5, JSX-->ES5 */
+</script>
+<script src="http://unpkg.com/react@17/umd/react.development.js" crossorigin>
+  /* import React, { Component, PureComponent } from 'react' */
+</script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.8.1/prop-types.js"
+  crossorigin
+></script>
+<script
+  src="http://unpkg.com/react-dom@17/umd/react-dom.development.js"
+  crossorigin
+>
+  /* import ReactDOM from 'react-dom' */
+</script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/react-redux/7.2.8/react-redux.js"
+  crossorigin
+>
+  /*  import ReactRedux, {Provider, useDispatch, useSelector} from 'react-redux' */
+</script>
+<script
+  src="http://unpkg.com/react-router-dom@6/umd/react-router-dom.development.js"
+  crossorigin
+>
+  /*  import ReactRouterDOM, {BrowserRouter, Routes, Route, Link, NavLink, useParams, useLocation, useHistory, useRouteMatch} from 'react-router-dom' */
+</script>
+<script type="text/babel">
+  const {
+    useState,
+    useEffect,
+    useRef,
+    useCallback,
+    useMemo,
+    useReducer,
+    Fragment
+  } = React;
+  ReactDOM.render( <MailboxContainer></MailboxContainer>, document.getElementById('app') );
 
+  function MailboxContainer({...props}) {
+            const [messages1,setMessages1] = useState(['React']);
+            const [messages2,setMessages2] = useState([]);
+            const [messages3,setMessages3] = useState(null);
+            return (
+                <div>
+                    <Mailbox unreadMessages={messages1} />
+                    <hr />
+                    <Mailbox unreadMessages={messages2} />
+                    <hr />
+                    <Mailbox unreadMessages={messages3} />
+                </div>
+            );
+        }
 
+  //const {unreadMessage, ...props}=props;
+  function Mailbox({unreadMessages, ...props}) {
 
+    //return 문 밖에서 나눌때는 if를 사용하여 나타낸다.
+
+    //return 문안에 나눌때 &&연산자 xml 이라
+    return (
+      <div>
+        <h1>Hello!</h1>
+        {/* props.unreadMessages.length > 0 인 경우에만 나오게 하시오*/}
+        {unreadMessages&&unreadMessages.length > 0  && (<h2>You have unread messages.</h2>)}
+
+      </div>
+    );
+  }
+</script>

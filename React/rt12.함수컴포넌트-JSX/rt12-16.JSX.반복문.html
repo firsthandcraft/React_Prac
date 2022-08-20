@@ -36,8 +36,53 @@
     <div id="wrap3"></div>
     <div id="wrap4"></div>
 </body>
-
 </html>
 
+<script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin>
+    /* 자바스크립트로 컴파일러. ES6-->ES5, JSX-->ES5 */
+</script>
+<script src="http://unpkg.com/react@17/umd/react.development.js" crossorigin>
+    /* import React, { Component, PureComponent } from 'react' */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.8.1/prop-types.js" crossorigin>
+</script>
+<script src="http://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin>
+    /* import ReactDOM from 'react-dom' */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-redux/7.2.8/react-redux.js" crossorigin>
+    /*  import ReactRedux, {Provider, useDispatch, useSelector} from 'react-redux' */
+</script>
+<script src="http://unpkg.com/react-router-dom@6/umd/react-router-dom.development.js" crossorigin>
+    /*  import ReactRouterDOM, {BrowserRouter, Routes, Route, Link, NavLink, useParams, useLocation, useHistory, useRouteMatch} from 'react-router-dom' */
+</script>
+<script type="text/babel">
+
+const { useState, useEffect, useRef, useCallback, useMemo,useReducer, Fragment } = React;
+
+//1.
+ReactDOM.render( <Loop3></Loop3>, document.getElementById('wrap1') );
+//2.
+function Loop3({
+  ...props
+}) {
+  // 컴포넌트의 상태값 설정
+  const [numberIndex, setnumberIndex] = useState(['one','two','three']); // 상태값이 기본타입인 경우
+
+  // JSX로 화면 만들기
+  const lis = numberIndex.map((value, index)=>(<li key={index}>{value}</li>));
+  return (
+    <ul>
+        {lis}
+    </ul>
+  )
+  /*    <ul>
+      <li>one</li>
+      <li>two</li>
+      <li>three</li>
+    </ul>
+  */
+}
+
+</script>
 
 
