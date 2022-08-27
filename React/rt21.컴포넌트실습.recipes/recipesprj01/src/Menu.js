@@ -11,10 +11,8 @@ import React, {
   forwardRef,
   useImperativeHandle
 } from "react";
-import { Recipe } from "./Menu";
+import Recipe from "./Recipe";
 //import Recipe from "./Recipe"; //export default인경우
-
-
 
 //.MENU
 function Menu({ title, recipes }) {
@@ -34,4 +32,10 @@ function Menu({ title, recipes }) {
     </article>
   );
 }
-export { Recipe };
+export default Menu;
+
+//export Aaa;
+// import { Aaa} from "";
+
+// export default Bbb;
+// import Aaa from "";

@@ -123,6 +123,88 @@
 
     </div>
 </body>
+
+<script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin>
+    /* 자바스크립트로 컴파일러. ES6-->ES5, JSX-->ES5 */
+</script>
+<script src="http://unpkg.com/react@17/umd/react.development.js" crossorigin>
+    /* import React, { Component, PureComponent } from 'react' */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.8.1/prop-types.js" crossorigin>
+</script>
+<script src="http://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin>
+    /* import ReactDOM from 'react-dom' */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-redux/7.2.8/react-redux.js" crossorigin>
+    /*  import ReactRedux, {Provider, useDispatch, useSelector} from 'react-redux' */
+</script>
+<script src="http://unpkg.com/react-router-dom@6/umd/react-router-dom.development.js" crossorigin>
+    /*  import ReactRouterDOM, {BrowserRouter, Routes, Route, Link, NavLink, useParams, useLocation, useHistory, useRouteMatch} from 'react-router-dom' */
+</script>
+<script type="text/babel">
+
+const { useState, useEffect, useRef, useCallback, useMemo,useReducer, Fragment } = React;
+//1.
+ReactDOM.render(<CardContainer/>, document.getElementById("app"));
+//2.
+
+function CardContainer({}) {
+  // 컴포넌트의 상태값 설정
+  const [변수명, set변수명] = useState('기본값'); // 상태값이 기본타입인 경우
+
+  // JSX로 화면 만들기
+  return (
+    <div>
+      <Card color={'#ff6663'}></Card>
+      <Card color={'#ffa737'}></Card>
+    </div>
+  )
+}
+
+// CardContainer.propTypes = {
+//   // props의 프로퍼티 타입 설정. https://ko.reactjs.org/docs/typechecking-with-proptypes.html
+//   // 인자명: PropTypes.func.isRequired,
+// };
+// CardContainer.defaultProps = {
+//   // props의 디폴트 값 설정. https://ko.reactjs.org/docs/typechecking-with-proptypes.html
+//   // 인자명: () => {},
+// };
+
+// export default React.memo(CardContainer); // React.memo()는 props 미변경시 컴포넌트 리렌더링 방지 설정
+
+function Card({color}) {
+  // JSX로 화면 만들기
+  return (
+    <div className="card">
+      <Square color={color}></Square>
+      <Label color={color}></Label>
+    </div>
+  )
+}
+
+function Square({color}) {
+  // JSX로 화면 만들기
+//   css를 자바스크립트로 대문자 문자열 마침표는 ; 대신 ,로
+  let style1={backgroundColor: color,}
+  return (
+    <div className="square" style={style1}>
+        &nbsp;
+    </div>
+  )
+}
+
+function Label({color}) {
+  // 컴포넌트의 상태값 설정
+  // JSX로 화면 만들기
+  return (
+    <div className="label">
+      {color}
+    </div>
+  )
+}
+
+
+</script>
 </html>
 
 

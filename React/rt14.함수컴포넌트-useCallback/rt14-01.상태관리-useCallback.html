@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
 
-    <link rel="stylesheet" href="../css/reset.css"/>
+    <link rel="stylesheet" href="../css/reset.css" />
+  </head>
 
-</head>
-
-<body>
-
-    <xmp>
+  <body>
+    <xmp
+>
         React의 컴포넌트 사이에서 데이터를 주고 받는 방법에 대해서 배운다.
 
         부모가 자식에게 데이터를 전달하는 것은 자식컴포넌트에서 부모컴포넌트의 데이터를 이용한(읽기) 로직을 처리하기 위함이고,
@@ -24,7 +22,11 @@
         - state up: 자식 -> 부모 데이터 전달
     </xmp>
     <div>
-        <img src="../images/stateupdonw.png" alt="" style="display: inline-block;">
+      <img
+        src="../images/stateupdonw.png"
+        alt=""
+        style="display: inline-block"
+      />
     </div>
 
     <xmp>
@@ -80,18 +82,127 @@
     </xmp>
 
     <div>
-        <img src="../images/react_data_flow.png" style="display: inline-block;">
+      <img src="../images/react_data_flow.png" style="display: inline-block" />
     </div>
 
-    <hr>
+    <hr />
 
-    <div id="app">
-    </div>
-</body>
+    <div id="app"></div>
+  </body>
 
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin>
+    /* 자바스크립트로 컴파일러. ES6-->ES5, JSX-->ES5 */
+  </script>
+  <script src="http://unpkg.com/react@17/umd/react.development.js" crossorigin>
+    /* import React, { Component, PureComponent } from 'react' */
+  </script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.8.1/prop-types.js"
+    crossorigin
+  ></script>
+  <script
+    src="http://unpkg.com/react-dom@17/umd/react-dom.development.js"
+    crossorigin
+  >
+    /* import ReactDOM from 'react-dom' */
+  </script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/react-redux/7.2.8/react-redux.js"
+    crossorigin
+  >
+    /*  import ReactRedux, {Provider, useDispatch, useSelector} from 'react-redux' */
+  </script>
+  <script
+    src="http://unpkg.com/react-router-dom@6/umd/react-router-dom.development.js"
+    crossorigin
+  >
+    /*  import ReactRouterDOM, {BrowserRouter, Routes, Route, Link, NavLink, useParams, useLocation, useHistory, useRouteMatch} from 'react-router-dom' */
+  </script>
+  <script type="text/babel">
+      const {
+        useState,
+        useEffect,
+        useRef,
+        useCallback,
+        useMemo,
+        useReducer,
+        Fragment
+      } = React;
+
+      //3.
+      function Parent({ ...props}) {
+        // 컴포넌트의 상태값 설정
+        const [parentText, setParentText] = useState('parent text'); // 상태값이 기본타입인 경우
+        const [childMessage, setChildMessage] = useState(null); // 상태값이 기본타입인 경우
+        const callbackChildText = useCallback( (param)=> {
+          //state변경
+          debugger;
+        setChildMessage( param ); // setChildMessage = param;
+        }, [
+          childMessage
+      ] );
+        // JSX로 화면 만들기
+        return (
+          <div>
+            <Child
+              callbackChildText={callbackChildText}
+              parentText={parentText}
+            ></Child>
+            <br />
+            {childMessage}
+          </div>
+        );
+      }
+      //변수 parentText:state  childText:props  함수handlerChild
+      Parent.propTypes = {
+      // props의 프로퍼티 타입 설정. https://ko.reactjs.org/docs/typechecking-with-proptypes.html
+      // 인자명: PropTypes.func.isRequired,
+      };
+      Parent.defaultProps = {
+        // props의 디폴트 값 설정. https://ko.reactjs.org/docs/typechecking-with-proptypes.html
+        // 인자명: () => {},
+      };
+
+      //2.
+      function Child({ callbackChildText,parentText }) {
+        // 컴포넌트의 상태값 설정
+        const [childText, setChildText] = useState("child text"); // 상태값이 기본타입인 경우
+
+      // 이벤트 핸들러 작성.
+      const handlerChild = ()=>{
+        // 이벤트 핸들러는 화살표 함수로 만든다
+        console.log(window.event.target);
+        debugger;
+        // 콜백 메서드 호출 === 부모 컴포넌트의 함수 호출.
+        callbackChildText('자식에서 값을 바꾸다');
+      };
+
+        // JSX로 화면 만들기
+        return (
+          <div>
+            parentText: {parentText}
+            <br />
+            childText: {childText}
+            <br />
+            <button onClick={handlerChild}>button</button>
+          </div>
+        );
+      }
+      //컴포넌트 만들기
+      //변수 parentText:state  childText:props  함수handlerChild
+      Child.propTypes = {
+      // props의 프로퍼티 타입 설정. https://ko.reactjs.org/docs/typechecking-with-proptypes.html
+      // 인자명: PropTypes.func.isRequired,
+      parentText: PropTypes.string.isRequired,
+      callbackChildText: PropTypes.func.isRequired,
+    };
+    Child.defaultProps = {
+      // props의 디폴트 값 설정. https://ko.reactjs.org/docs/typechecking-with-proptypes.html
+      // 인자명: () => {},
+      parentText: '',
+      callbackChildText:() => {},
+    };
+      //1.
+      ReactDOM.render(<Parent />, document.getElementById("app"));
+  </script>
 </html>
-
-
-
-
-
