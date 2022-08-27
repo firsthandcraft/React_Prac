@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
 
-    <link rel="stylesheet" href="../css/reset.css"/>
-</head>
+    <link rel="stylesheet" href="../css/reset.css" />
+  </head>
 
-<body>
+  <body>
     <xmp>
         HelloWorldContainer, HelloWorld 컴포넌트를 만들고
         props를 사용하여 인자를 넘겨 받는 방법을 복습한다.
@@ -42,16 +41,85 @@
         HelloWorldContainer JSX
         ==> 어떻게 만들면 될까?
     </xmp>
-    <hr>
+    <hr />
 
-    <div id="app">
-        요기에
-    </div>
-</body>
+    <div id="app">요기에</div>
+  </body>
 
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin>
+    /* 자바스크립트로 컴파일러. ES6-->ES5, JSX-->ES5 */
+  </script>
+  <script src="http://unpkg.com/react@17/umd/react.development.js" crossorigin>
+    /* import React, { Component, PureComponent } from 'react' */
+  </script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.8.1/prop-types.js"
+    crossorigin
+  ></script>
+  <script
+    src="http://unpkg.com/react-dom@17/umd/react-dom.development.js"
+    crossorigin
+  >
+    /* import ReactDOM from 'react-dom' */
+  </script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/react-redux/7.2.8/react-redux.js"
+    crossorigin
+  >
+    /*  import ReactRedux, {Provider, useDispatch, useSelector} from 'react-redux' */
+  </script>
+  <script
+    src="http://unpkg.com/react-router-dom@6/umd/react-router-dom.development.js"
+    crossorigin
+  >
+    /*  import ReactRouterDOM, {BrowserRouter, Routes, Route, Link, NavLink, useParams, useLocation, useHistory, useRouteMatch} from 'react-router-dom' */
+  </script>
+  <script type="text/babel">
+    const {
+      useState,
+      useEffect,
+      useRef,
+      useCallback,
+      useMemo,
+      useReducer,
+      Fragment
+    } = React;
+
+    function HelloWorldContainer({ props }) {
+      // 컴포넌트의 상태값 설정
+      const [indexs, setIndexs] = useState([1, 2, 3, 4]); // 상태값이 기본타입인 경우
+
+      // JSX로 화면 만들기
+      //<HelloWorld></HelloWorld>이면 0 이다 .
+
+      return (
+        <Fragment>
+          {indexs.map((value) => (
+
+            <HelloWorld index={value}></HelloWorld>
+          ))}
+        </Fragment>
+      );
+    }
+    function HelloWorld({ index }) {
+      return(
+      <div>Hello, react world!!! {index} - component</div>);
+    }
+
+    HelloWorld.propTypes = {
+      // props의 프로퍼티 타입 설정. https://ko.reactjs.org/docs/typechecking-with-proptypes.html
+      // 인자명: PropTypes.func.isRequired,
+      index: PropTypes.number,
+    };
+    HelloWorld.defaultProps = {
+      // props의 디폴트 값 설정. https://ko.reactjs.org/docs/typechecking-with-proptypes.html
+      // 인자명: () => {},
+      index:0,
+    };
+    // export default React.memo(HelloWorldContainer); // React.memo()는 props 미변경시 컴포넌트 리렌더링 방지 설정
+
+
+    ReactDOM.render(<HelloWorldContainer />, document.getElementById("app"));
+
+  </script>
 </html>
-
-
-
-
-
