@@ -7,9 +7,23 @@
     <title>Document</title>
 
     <link rel="stylesheet" href="../css/reset.css" />
+    <style>
+      .component-parent {
+        width: 50%;
+        background-color: lightblue;
+        padding: 5%;
+      }
+
+      .component-child {
+        width: 80%;
+        background-color: lightgray;
+        padding: 5% 5% 10% 0;
+      }
+    </style>
   </head>
 
   <body>
+    <img src="../images/vue-sample-counter.png" alt="" srcset="" />
     <xmp
 >
         React의 컴포넌트 사이에서 데이터를 주고 받는 방법에 대해서 배운다.
@@ -87,7 +101,18 @@
 
     <hr />
 
-    <div id="app"></div>
+    <div id="app" class="component-parent">
+      Parent counter : {counter} <br />
+      <button name="parent" onClick="handlerAddCounter">+</button>
+      <button name="parent" onClick="handlerSubCounter">-</button>
+      <p></p>
+
+      <div class="component-child">
+        Child counter : {props.counter} <br />
+        <button name="child" onClick="handlerAddCounter">+</button>
+        <button name="child" onClick="handlerSubCounter">-</button>
+      </div>
+    </div>
   </body>
 
   <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin>
@@ -119,90 +144,103 @@
     /*  import ReactRouterDOM, {BrowserRouter, Routes, Route, Link, NavLink, useParams, useLocation, useHistory, useRouteMatch} from 'react-router-dom' */
   </script>
   <script type="text/babel">
-      const {
-        useState,
-        useEffect,
-        useRef,
-        useCallback,
-        useMemo,
-        useReducer,
-        Fragment
-      } = React;
+    const {
+      useState,
+      useEffect,
+      useRef,
+      useCallback,
+      useMemo,
+      useReducer,
+      Fragment
+    } = React;
 
-      //3.
-      function Parent({ ...props}) {
-        // 컴포넌트의 상태값 설정
-        const [parentText, setParentText] = useState('parent text'); // 상태값이 기본타입인 경우
-        const [childMessage, setChildMessage] = useState(null); // 상태값이 기본타입인 경우
-        const callbackChildText = useCallback( (param)=> {
+    //3.
+    function Parent({ ...props }) {
+      // 컴포넌트의 상태값 설정
+      const [counter, setcounter] = useState(0); // 상태값이 기본타입인 경우
+      // const [childMessage, setChildMessage] = useState(null); // 상태값이 기본타입인 경우
+      const callbackCounter = useCallback(
+        (param) => {
           //state변경
-          debugger;
-        setChildMessage( param ); // setChildMessage = param;
-        }, [
-          childMessage
-      ] );
-        // JSX로 화면 만들기
-        return (
-          <div>
-            <Child
-              callbackChildText={callbackChildText}
-              parentText={parentText}
-            ></Child>
-            <br />
-            {childMessage}
-          </div>
-        );
-      }
-      //변수 parentText:state  childText:props  함수handlerChild
-      Parent.propTypes = {
-      // props의 프로퍼티 타입 설정. https://ko.reactjs.org/docs/typechecking-with-proptypes.html
-      // 인자명: PropTypes.func.isRequired,
-      };
-      Parent.defaultProps = {
-        // props의 디폴트 값 설정. https://ko.reactjs.org/docs/typechecking-with-proptypes.html
-        // 인자명: () => {},
-      };
 
-      //2.
-      function Child({ callbackChildText,parentText }) {
-        // 컴포넌트의 상태값 설정
-        const [childText, setChildText] = useState("child text"); // 상태값이 기본타입인 경우
-
+          setCounter(counter + param); // setChildMessage = param;
+        },
+        [counter]
+      );
       // 이벤트 핸들러 작성.
-      const handlerChild = ()=>{
+      const handlerAddCounter = () => {
+        // 이벤트 핸들러는 화살표 함수로 만든다
+        // counter = counter + 10;
+        setCounter(counter + 10);
+      };
+      const handlerSubCounter = () => {
+        // 이벤트 핸들러는 화살표 함수로 만든
+        // counter = counter - 10;
+        setCounter(counter - 10);
+      };
+      // JSX로 화면 만들기
+      return (
+        <div id="app" class="component-parent">
+          Parent counter : {counter} <br />
+          <button name="parent" onClick={handlerAddCounter}>
+            +
+          </button>
+          <button name="parent" onClick={handlerSubCounter}>
+            -
+          </button>
+          <p></p>
+          <Child counter={counter} callbackCounter={callbackCounter}></Child>
+        </div>
+      );
+    }
+
+    // const  { counter } = props;
+    // counter === props.counter;
+    //2.
+    function Child({ counter, callbackCounter  }) {
+      // 컴포넌트의 상태값 설정
+      // 이벤트 핸들러 작성.
+      const handlerAddCounter = () => {
         // 이벤트 핸들러는 화살표 함수로 만든다
         console.log(window.event.target);
-        debugger;
-        // 콜백 메서드 호출 === 부모 컴포넌트의 함수 호출.
-        callbackChildText('자식에서 값을 바꾸다');
+        // props.counter = props.counter + 1;
+        callbackCounter(+1);
+      };
+      const handlerSubCounter = () => {
+        // 이벤트 핸들러는 화살표 함수로 만든다
+        console.log(window.event.target);
+        // props.counter = props.counter - 1;
+        callbackCounter(-1);
       };
 
-        // JSX로 화면 만들기
-        return (
-          <div>
-            parentText: {parentText}
-            <br />
-            childText: {childText}
-            <br />
-            <button onClick={handlerChild}>button</button>
-          </div>
-        );
-      }
-      //컴포넌트 만들기
-      //변수 parentText:state  childText:props  함수handlerChild
-      Child.propTypes = {
+      // JSX로 화면 만들기
+      return (
+        <div class="component-child">
+          Child counter : {counter} <br />
+          <button name="child" onClick={handlerAddCounter}>
+            +
+          </button>
+          <button name="child" onClick={handlerSubCounter}>
+            -
+          </button>
+        </div>
+      );
+    }
+    //컴포넌트 만들기
+    //변수 parentText:state  childText:props  함수handlerChild
+    Child.propTypes = {
       // props의 프로퍼티 타입 설정. https://ko.reactjs.org/docs/typechecking-with-proptypes.html
       // 인자명: PropTypes.func.isRequired,
-      parentText: PropTypes.string.isRequired,
-      callbackChildText: PropTypes.func.isRequired,
+      couter: PropTypes.number.isRequired,
+      callbackCounter: PropTypes.func.isRequired
     };
     Child.defaultProps = {
       // props의 디폴트 값 설정. https://ko.reactjs.org/docs/typechecking-with-proptypes.html
       // 인자명: () => {},
-      parentText: '',
-      callbackChildText:() => {},
+      couter: 0,
+      callbackCounter: () => {}
     };
-      //1.
-      ReactDOM.render(<Parent />, document.getElementById("app"));
+    //1.
+    ReactDOM.render(<Parent></Parent>, document.getElementById("app"));
   </script>
 </html>
