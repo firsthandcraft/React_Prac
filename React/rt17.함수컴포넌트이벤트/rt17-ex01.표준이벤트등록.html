@@ -1,46 +1,48 @@
 <!DOCTYPE html>
 <html lang="ko">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>표준이벤트등록</title>
 
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
 
     <!-- CSS import -->
     <link rel="stylesheet" href="../css/reset.css" />
 
     <style>
-        ul {
-            float: left;
-            margin: 10px 30px;
-        }
+      ul {
+        float: left;
+        margin: 10px 30px;
+      }
 
-        #id2 {
-            width: 100px;
-            height: 100px;
-            margin-left: 50px;
-        }
+      #id2 {
+        width: 100px;
+        height: 100px;
+        margin-left: 50px;
+      }
 
-        span {
-            width: 70px;
-            height: 50px;
-            float: left;
-            background-color: red;
-            cursor: pointer;
-            margin: 5px;
-        }
+      span {
+        width: 70px;
+        height: 50px;
+        float: left;
+        background-color: red;
+        cursor: pointer;
+        margin: 5px;
+      }
 
-        hr {
-            clear: both;
-        }
+      hr {
+        clear: both;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <pre>
 
       a 를 클릭하면 href 에 있는 값을 "img2"영역 에 나오게 하시오
@@ -66,26 +68,29 @@
     <hr />
 
     <div id="app">
-        <xmp>
-            글자를 클릭하면 href 에 있는 값을 "img2"영역 에 나오게 하시오
+      <xmp
+>
+            글자를 클릭하면 href 에 있는 값을 "img#img2"영역 에 나오게 하시오
             a 태그에 click 이벤트 핸들러를 작성하시오. ==> imageclick
-        </xmp>
-        <ul>
-            <li>
-                <a class="image3" href="../images/image3.jpg" click="imageclick">
-                    강아지 사진
-                </a>
-            </li>
-            <li>
-                <a class="image3" href="../images/image4.jpg" click="imageclick">
-                    고양이 사진
-                </a>
-            </li>
-        </ul>
-        <img id="img2" src="img_image3" />
-        <hr />
+        </xmp
+      >
+      <ul>
+        <li>
+          <a class="image3" href="../images/image3.jpg" click="imageclick">
+            강아지 사진
+          </a>
+        </li>
+        <li>
+          <a class="image3" href="../images/image4.jpg" click="imageclick">
+            고양이 사진
+          </a>
+        </li>
+      </ul>
+      <img id="img2" src="imgImage3" />
+      <hr />
 
-        <xmp>
+      <xmp
+>
             이미지 위에 마우스를 올리거나 내리면 src 에 있는 값을 바꾸시오 하시오
             이미지에 mouseover 와 mouseout 이벤트를 핸들러를 작성하시오.
             mouseover 이벤트 핸들러 ==> imageover
@@ -93,62 +98,259 @@
 
             이미지 위에 마우스를 내리면(mouseout ) ==> ../images/but1.gif , ../images/img_swap_off.png
             이미지 위에 마우스를 올리면(mouseover) ==> ../images/but2.gif , ../images/img_swap_on.png
-        </xmp>
-        <img src="img_but1" id="but1"     mouseover="imageover" mouseout="imageout" />
-        <img src="img_swap" id="img-swap" mouseover="imageover" mouseout="imageout" />
-        <hr />
+        </xmp
+      >
+      <img src="img_but1" id="but1" mouseover="imageover" mouseout="imageout" />
+      <img
+        src="img_swap"
+        id="img-swap"
+        mouseover="imageover"
+        mouseout="imageout"
+      />
+      <hr />
 
-        <xmp>
+      <xmp
+>
             span에 mouseover 이벤트 핸들러를 작성하시오. ==> spanmouseover. background-color를 yellow로 설정
             span에 mousedown 이벤트 핸들러를 작성하시오. ==> spanmousedown. background-color를 blue로 설정
             span에 mouseup 이벤트 핸들러를 작성하시오.   ==> spanmouseup.   background-color를 pink로 설정
             span에 mouseout 이벤트 핸들러를 작성하시오.  ==> spanmouseout.  background-color를 red로 설정
-        </xmp>
-        <span mouseover= "spanmouseover"
-              mousedown= "spanmousedown"
-              mouseup  = "spanmouseup"
-              mouseout = "spanmouseout" >
-        </span>
-        <span mouseover= "spanmouseover"
-              mousedown= "spanmousedown"
-              mouseup  = "spanmouseup"
-              mouseout = "spanmouseout" >
-        </span>
-        <span mouseover= "spanmouseover"
-              mousedown= "spanmousedown"
-              mouseup  = "spanmouseup"
-              mouseout = "spanmouseout">
-        </span>
-        <hr />
+        </xmp
+      >
+      <span
+        mouseover="spanmouseover"
+        mousedown="spanmousedown"
+        mouseup="spanmouseup"
+        mouseout="spanmouseout"
+      >
+      </span>
+      <span
+        mouseover="spanmouseover"
+        mousedown="spanmousedown"
+        mouseup="spanmouseup"
+        mouseout="spanmouseout"
+      >
+      </span>
+      <span
+        mouseover="spanmouseover"
+        mousedown="spanmousedown"
+        mouseup="spanmouseup"
+        mouseout="spanmouseout"
+      >
+      </span>
+      <hr />
 
-        <xmp>
+      <xmp
+>
             select 에 change 이벤트 핸들러를 작성하시오.
             change 이벤트 핸들러: selectchange
 
             도전: 기능추가
             "vue23-01.v-for와배열.html" 를 참조하여 option 부분을 v-for 를 사용하도록 수정하시오.
+        </xmp
+      >
+      <select id="sel" change="selectchange">
+        <option value="../images/strawberry.gif">딸기</option>
+        <option value="../images/banana.gif">바나나</option>
+        <option value="../images/apple.gif" selected>사과</option>
+      </select>
 
-        </xmp>
-        <select id="sel" change="selectchange">
-            <option value="../images/strawberry.gif">딸기</option>
-            <option value="../images/banana.gif">바나나</option>
-            <option value="../images/apple.gif" selected>사과</option>
-        </select>
-
-        <img id="img" src="img_select" />
-        <hr />
-
-        <xmp>
+      <img id="img" src="img_select" />
+      <hr />
+      <xmp
+>
             input 태그에 focus, blur 효과 넣기
             >>> input 태그에 테두리를 칠하는 경우에는 outline을 사용.
             focus 이벤트 핸들러 ==> inputfocus. outline: 2px dotted red 설정
             blur 이벤트 핸들러 ==> inputblur. outline: none 설정
-        </xmp>
-        <input type="text" id="ID" blur="inputblur" focus="inputfocus" />
-        <hr />
-
+        </xmp
+      >
+      <input type="text" id="ID" blur="inputblur" focus="inputfocus" />
+      <hr />
     </div>
-
-</body>
-
+  </body>
 </html>
+
+<script
+  src="https://unpkg.com/@babel/standalone/babel.min.js"
+  crossorigin="anonymous"
+>
+  /* 자바스크립트로 컴파일러. ES6-->ES5, JSX-->ES5 */
+</script>
+<script
+  src="http://unpkg.com/react@17/umd/react.development.js"
+  crossorigin="anonymous"
+>
+  /* import React, { Component, PureComponent } from 'react' */
+</script>
+<script
+  src="http://unpkg.com/react-dom@17/umd/react-dom.development.js"
+  crossorigin="anonymous"
+>
+  /* import ReactDOM from 'react-dom' */
+</script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.8.1/prop-types.js"
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/react-redux/7.2.8/react-redux.js"
+  crossorigin="anonymous"
+>
+  /*  import ReactRedux, {Provider, useDispatch, useSelector} from 'react-redux' */
+</script>
+<script
+  src="http://unpkg.com/react-router-dom@6/umd/react-router-dom.development.js"
+  crossorigin="anonymous"
+>
+  /*  import ReactRouterDOM, {BrowserRouter, Routes, Route, Link, NavLink, useParams, useLocation, useHistory, useRouteMatch} from 'react-router-dom' */
+</script>
+<script type="text/babel">
+  const {
+    useState,
+    useEffect,
+    useRef,
+    useCallback,
+    useMemo,
+    useReducer,
+    Fragment
+  } = React;
+  function App() {
+    // useState 를 사용한 컴포넌트의 상태값 설정
+    const [imageImage3, setImageImage3] = useState(null); // 상태값이 기본타입인 경우
+    const [img_but1,  setimg_but1] = useState('../images/but1.gif'); // 상태값이 기본타입인 경우
+    const [img_swap, setimg_swap] = useState('../images/img_swap_off.png'); // 상태값이 기본타입인 경우
+
+    // 이벤트 핸들러 작성.
+    const imageclick = (e) => {
+      // 이벤트 핸들러는 화살표 함수로 만든다
+      console.log(e.target);
+      //     a 를 클릭하면 href 에 있는 값을 "img2"영역 에 나오게 하시오
+        //1. 클릭된 a 태그의 href 값을 가져온다.
+        // ==> event.target.href   # a 태그의 href 속성값
+        //     ==> event.target.value  # input 태그의 value 속성값
+        const href = window.event.target.href;
+
+        // 2. id="img2" 의 src 에 1번에서 얻은 href의 값을 넣는다.
+        //     ==> img 태그의 src 속성에 데이터 바인딩을 하려고 한다
+        setImageImage3(href);
+        //3. a 태그의 redirect 기능을 취소하시오.
+        window.event.preventDefault();
+        //window.event.stopPropagation*/();
+        //
+    };
+
+    // 이벤트 핸들러 작성.
+    const imageover = (e) => {
+    // 이벤트 핸들러는 화살표 함수로 만든다
+    console.log(e.target);
+    // 이미지 위에 마우스를 올리면(mouseover) ==> ../images/but2.gif , ../images/img_swap_on.png
+    if(e.target.id === "but1"){setimg_but1('../images/but2.gif');
+    }else{setimg_swap('../images/img_swap_on.png');
+    }
+    };
+
+    // 이벤트 핸들러 작성.
+    const imageout= (e) => {
+    // 이벤트 핸들러는 화살표 함수로 만든다
+    console.log(e.target);
+    if(e.target.id === "but1"){
+    setimg_but1('../images/but1.gif');
+    }else{
+    setimg_swap('../images/img_swap_off.png');
+    }
+    };
+
+    //span의 이벤트
+    //span에 mouseover 이벤트 핸들러를 작성하시오. ==> spanmouseover. background-color를 yellow로 설정
+
+    const spanmouseover= (e) => {
+        console.log(e.target);
+        e.target.style.backgroundColor='yellow';
+
+    };
+    // span에 mousedown 이벤트 핸들러를 작성하시오. ==> spanmousedown. background-color를 blue로 설정
+    const spanmousedown= (e) => {
+        console.log(e.target);
+       // e.target.style={backgroundColor: 'blue';}  e.target은 이방법이 핸들러에서는 안된다.
+       e.target.style.backgroundColor='blue';
+
+    };
+    // span에 mouseup 이벤트 핸들러를 작성하시오.   ==> spanmouseup.   background-color를 pink로 설정
+    const spanmouseup= (e) => {
+        console.log(e.target);
+        e.target.style.backgroundColor='pink';
+    };
+    // span에 mouseout 이벤트 핸들러를 작성하시오.  ==> spanmouseout.  background-color를 red로 설정
+    const spanmouseout= (e) => {
+        console.log(e.target);
+        e.target.style.backgroundColor='red';
+    };
+
+    const [img_select, setimg_select] = useState('../images/apple.gif'); // 상태값이 기본타입인 경우
+    // 이벤트 핸들러 작성.
+    const selectchange = (e) => {
+    // 이벤트 핸들러는 화살표 함수로 만든다
+    console.log(e.target.value);//option
+
+    setimg_select(e.target.value);
+    };
+
+
+
+    // JSX로 화면 만들기
+    return (
+      <div>
+        <ul>
+          <li>
+            <a className="image3" href="../images/image3.jpg" onClick={imageclick}>
+              강아지 사진
+            </a>
+          </li>
+          <li>
+            <a className="image3" href="../images/image4.jpg" onClick={imageclick}>
+              고양이 사진
+            </a>
+          </li>
+        </ul>
+        <img id="img2" src={imageImage3} />
+        <hr />
+        <img src={img_but1} id="but1" onMouseOver={imageover} onMouseOut={imageout} />
+        <img src={img_swap} id="img_swap" onMouseOver={imageover} onMouseOut={imageout} />
+        <hr/>
+        <span
+        onMouseOver={spanmouseover}
+        onMouseDown={spanmousedown}
+        onMouseUp={spanmouseup}
+        onMouseOut={spanmouseout}
+      >
+      </span>
+      <span
+        onMouseOver={spanmouseover}
+        onMouseDown={spanmousedown}
+        onMouseUp={spanmouseup}
+        onMouseOut={spanmouseout}
+      >
+      </span>
+      <span
+        onMouseOver={spanmouseover}
+        onMouseDown={spanmousedown}
+        onMouseUp={spanmouseup}
+        onMouseOut={spanmouseout}
+      >
+      </span>
+            <select id="sel" onChange={selectchange}>
+                <option value="../images/strawberry.gif">딸기</option>
+                <option value="../images/banana.gif">바나나</option>
+                <option value="../images/apple.gif" selected>사과</option>
+            </select>
+
+      <img id="img" src={img_select} />
+      <hr />
+        </div>
+    );
+  }
+
+  ReactDOM.render(<App />, document.getElementById("app"));
+
+</script>
