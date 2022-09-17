@@ -11,6 +11,7 @@ import React, {
 } from "react";
 
 import ColorList from "./ColorList";
+import Color from "./Color";
 import PropTypes from "prop-types";
 import Styled from "styled-components";
 // import { useDispatch, useSelector } from 'react-redux';
@@ -20,64 +21,60 @@ import Styled from "styled-components";
 
 /* const {aaa, bbb, ...props} = props */
 function RatingContaier({ ...props }) {
-  // redux store 와 연동되는 경우에만 useDispatch(), useSelector() 사용
-  // const dispatch = useDispatch();
-  // const { error, isLoading, notis } = useSelector( state => state.notis );
-
-  // 페이지에 대한 경로와 query-string 정보를 추출하는 경우 useLocation() 훅 사용
-  // const { pathname, search } = useLocation();
-
-  // path 변수를 추출하는 경우 useParams() 사용. id === match.params.id */
-  // const { id } = useParams();
-
-  // 이전 경로 useHistory() 사용 */
-  // const history = useHistory();
-
   // useState 를 사용한 컴포넌트의 상태값 설정
-  const [변수명, set변수명] = useState("기본값"); // 상태값이 기본타입인 경우
-  const [state, setState] = useState({ id: 0, name: "", age: 0 }); // 상태값이 참조타입 경우
-
-  // useReducer 를 사용한 컴포넌트의 상태값 설정. 리듀서는 현재 상태를 받아서 새 상태를 반환하는 함수다
-  const [리듀서, set리듀서] = useReducer(
-    (oldvalue, newvalue) => ({ ...oldvalue, ...newvalue }),
-    { id: 0, name: "", age: 0 }
-  ); // 리듀서(reducer) 방식의 상태값 설정
-
-  // ref 만들기.
-  // const refInput = useRef();
-
-  // refIsMounted는 생명주기의 마운트와 업데이트를 구분하기 위한 ref
-  const refIsMounted = useRef(false);
-  useEffect(
-    () => {
-      if (refIsMounted.current) {
-        // 업데이트 될 때마다 실행됨. 여러번. state 가 변경될 때마다
-        // console.log('RatingContaier >> componentDidUpdate');
-      } else {
-        // 마운트 완료 후에 실행됨. 한번만. focus 줄때
-        // console.log('RatingContaier >> componentDidMount');
-        refIsMounted.current = true;
-      }
-      return () => {
-        // 언마운트 직전에 한번만 실행됨.
-        // console.log('RatingContaier >> componentWillUmount');
-      };
+  const [colors, setColors] = useState([
+    {
+      id: "8658c1d0-9eda-4a90-95e1-8001e8eb6036",
+      title: "바닷빛 파랑",
+      color: "#0070ff",
+      rating: 3
     },
-    [
-      /* 조건 제어: 메서드와 연관되는 상태(변수)명들을 기술 */
-    ]
-  );
+    {
+      id: "f9005b4e-975e-433d-a646-79df172e1dbb",
+      title: "토마토",
+      color: "#d10012",
+      rating: 2
+    },
+    {
+      id: "58d9caee-6ea6-4d7b-9984-65b145031979",
+      title: "잔디",
+      color: "#67bf4f",
+      rating: 1
+    },
+    {
+      id: "a5685c39-6bdc-4727-9188-6c9a00bf7f95",
+      title: "파티 핑크",
+      color: "#ff00f7",
+      rating: 5
+    }
+  ]);
 
   // callback 메서드 작성. callback 메서드는 부모의 공유 상태값을 변경하기 위해서 사용된다.
-  const callback = useCallback(
-    (param) => {
-      // state 변경
-    },
-    [
-      /* 조건 제어: 메서드와 연관되는 상태(변수)명들을 기술 */
-    ]
-  );
+  const callbackRateColor = useCallback(
+    (id, rating) => {
+      // state 변경 [안에      /* 조건 제어: 메서드와 연관되는 상태(변수)명들을 기술 */
 
+      const newColors = colors.map((item) => {
+        //debugger;
+        if (item.id === id) {
+          item.rating = rating;
+        }
+        return item;
+      });
+      //debugger;
+      setColors(newColors); //colors=newColors;
+    },
+    [colors]
+  );
+  const callbackRemoveColor = useCallback(
+    (id) => {
+      // state 변경
+
+      const newColors = colors.filter((color) => color.id !== id);
+      setColors(newColors); //colors = newColors;
+    },
+    [/* 조건 제어: 메서드와 연관되는 상태(변수)명들을 기술 */ colors]
+  );
   // 이벤트 핸들러 작성.
   const handler = () => {
     // 이벤트 핸들러는 화살표 함수로 만든다
@@ -87,80 +84,11 @@ function RatingContaier({ ...props }) {
   // JSX로 화면 만들기
   return (
     <div className="rating-container">
-      <div className="color-list">
-        <section className="color">
-          <h1>바닷빛 파랑</h1>
-          <button>X</button>
-          <div
-            className="color"
-            style={{ backgroundColor: "rgb(0, 112, 255)" }}
-          ></div>
-          <div>
-            <div className="star-rating">
-              <div className="star selected"></div>
-              <div className="star selected"></div>
-              <div className="star selected"></div>
-              <div className="star"></div>
-              <div className="star"></div>
-              <p>별점: 3 / 5</p>
-            </div>
-          </div>
-        </section>
-        <section className="color">
-          <h1>토마토</h1>
-          <button>X</button>
-          <div
-            className="color"
-            style={{ backgroundColor: "rgb(209, 0, 18)" }}
-          ></div>
-          <div>
-            <div className="star-rating">
-              <div className="star selected"></div>
-              <div className="star selected"></div>
-              <div className="star"></div>
-              <div className="star"></div>
-              <div className="star"></div>
-              <p>별점: 2 / 5</p>
-            </div>
-          </div>
-        </section>
-        <section className="color">
-          <h1>잔디</h1>
-          <button>X</button>
-          <div
-            className="color"
-            style={{ backgroundColor: "rgb(103, 191, 79)" }}
-          ></div>
-          <div>
-            <div className="star-rating">
-              <div className="star selected"></div>
-              <div className="star"></div>
-              <div className="star"></div>
-              <div className="star"></div>
-              <div className="star"></div>
-              <p>별점: 1 / 5</p>
-            </div>
-          </div>
-        </section>
-        <section className="color">
-          <h1>파티 핑크</h1>
-          <button>X</button>
-          <div
-            className="color"
-            style={{ backgroundColor: "rgb(255, 0, 247)" }}
-          ></div>
-          <div>
-            <div className="star-rating">
-              <div className="star selected"></div>
-              <div className="star selected"></div>
-              <div className="star selected"></div>
-              <div className="star selected"></div>
-              <div className="star selected"></div>
-              <p>별점: 5 / 5</p>
-            </div>
-          </div>
-        </section>
-      </div>
+      <ColorList
+        colors={colors}
+        callbackRateColor={callbackRateColor}
+        callbackRemoveColor={callbackRemoveColor}
+      ></ColorList>
     </div>
   );
 }
