@@ -2,19 +2,6 @@ import logo from "./logo.svg";
 // import './App.css';
 import styled, { css } from "styled-components";
 
-const StyledCircle = styled.div`
-  width: 5rem;
-  height: 5rem;
-  background: ${(props) => props.color || "black"};
-  border-radius: 50%;
-  ${(props) =>
-    props.huge &&
-    css`
-      width: 10rem;
-      height: 10rem;
-    `}
-`;
-
 const StyledApp = styled.div`
   .App {
     text-align: center;
@@ -55,6 +42,22 @@ const StyledApp = styled.div`
     }
   }
 `;
+
+const StyledCircle = styled.div`
+  background: ${(props) => props.color || "black"};
+  border-radius: 50%;
+
+  width: 5rem;
+  height: 5rem;
+
+  ${(props) =>
+    props.huge &&
+    css`
+      width: 10rem;
+      height: 10rem;
+    `}
+`;
+
 function App() {
   return (
     <StyledApp>

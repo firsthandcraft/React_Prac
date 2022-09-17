@@ -1,0 +1,19 @@
+>>> styled-components 적용 전
+<style>
+    .App {
+        text-align: center;
+    }
+</style>
+
+<div className="App">
+    ...중략
+</div>
+
+>>> styled-components 적용 후
+const styledContainerDiv = styled.div`
+    text-align: center;
+`;
+<styledContainerDiv>
+    ...중략
+</styledContainerDiv>
+
