@@ -9,6 +9,7 @@ import React, {
   forwardRef,
   useImperativeHandle
 } from "react";
+import Star from "./Star";
 import PropTypes from "prop-types";
 import Styled from "styled-components";
 // import { useDispatch, useSelector } from 'react-redux';
@@ -83,7 +84,12 @@ function StarRating({ ...props }) {
   };
 
   // JSX로 화면 만들기
-  return <div>StarRating</div>;
+  return (
+    <div>
+      StarRating
+      <Star></Star>
+    </div>
+  );
 }
 
 StarRating.propTypes = {

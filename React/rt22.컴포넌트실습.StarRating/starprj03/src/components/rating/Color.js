@@ -11,6 +11,7 @@ import React, {
 } from "react";
 import PropTypes from "prop-types";
 import Styled from "styled-components";
+import StarRating from "./StarRating";
 // import { useDispatch, useSelector } from 'react-redux';
 // import ReactRouterDOM, { BrowserRouter, Routes, Route, Switch, Redirect, Link, NavLink, useParams, useLocation, useHistory, useRouteMatch } from 'react-router-dom';
 
@@ -83,7 +84,12 @@ function Color({ ...props }) {
   };
 
   // JSX로 화면 만들기
-  return <div>Color</div>;
+  return (
+    <div>
+      Color
+      <StarRating></StarRating>
+    </div>
+  );
 }
 
 Color.propTypes = {

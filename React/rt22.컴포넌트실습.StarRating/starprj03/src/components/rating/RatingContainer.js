@@ -9,6 +9,8 @@ import React, {
   forwardRef,
   useImperativeHandle
 } from "react";
+
+import ColorList from "./ColorList";
 import PropTypes from "prop-types";
 import Styled from "styled-components";
 // import { useDispatch, useSelector } from 'react-redux';
@@ -83,7 +85,84 @@ function RatingContaier({ ...props }) {
   };
 
   // JSX로 화면 만들기
-  return <div>RatingContaier</div>;
+  return (
+    <div className="rating-container">
+      <div className="color-list">
+        <section className="color">
+          <h1>바닷빛 파랑</h1>
+          <button>X</button>
+          <div
+            className="color"
+            style={{ backgroundColor: "rgb(0, 112, 255)" }}
+          ></div>
+          <div>
+            <div className="star-rating">
+              <div className="star selected"></div>
+              <div className="star selected"></div>
+              <div className="star selected"></div>
+              <div className="star"></div>
+              <div className="star"></div>
+              <p>별점: 3 / 5</p>
+            </div>
+          </div>
+        </section>
+        <section className="color">
+          <h1>토마토</h1>
+          <button>X</button>
+          <div
+            className="color"
+            style={{ backgroundColor: "rgb(209, 0, 18)" }}
+          ></div>
+          <div>
+            <div className="star-rating">
+              <div className="star selected"></div>
+              <div className="star selected"></div>
+              <div className="star"></div>
+              <div className="star"></div>
+              <div className="star"></div>
+              <p>별점: 2 / 5</p>
+            </div>
+          </div>
+        </section>
+        <section className="color">
+          <h1>잔디</h1>
+          <button>X</button>
+          <div
+            className="color"
+            style={{ backgroundColor: "rgb(103, 191, 79)" }}
+          ></div>
+          <div>
+            <div className="star-rating">
+              <div className="star selected"></div>
+              <div className="star"></div>
+              <div className="star"></div>
+              <div className="star"></div>
+              <div className="star"></div>
+              <p>별점: 1 / 5</p>
+            </div>
+          </div>
+        </section>
+        <section className="color">
+          <h1>파티 핑크</h1>
+          <button>X</button>
+          <div
+            className="color"
+            style={{ backgroundColor: "rgb(255, 0, 247)" }}
+          ></div>
+          <div>
+            <div className="star-rating">
+              <div className="star selected"></div>
+              <div className="star selected"></div>
+              <div className="star selected"></div>
+              <div className="star selected"></div>
+              <div className="star selected"></div>
+              <p>별점: 5 / 5</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  );
 }
 
 RatingContaier.propTypes = {

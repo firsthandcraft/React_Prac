@@ -9,6 +9,8 @@ import React, {
   forwardRef,
   useImperativeHandle
 } from "react";
+
+import Color from "./Color";
 import PropTypes from "prop-types";
 import Styled from "styled-components";
 // import { useDispatch, useSelector } from 'react-redux';
@@ -83,7 +85,12 @@ function ColorList({ ...props }) {
   };
 
   // JSX로 화면 만들기
-  return <div>ColorList</div>;
+  return (
+    <div>
+      ColorList
+      <Color></Color>
+    </div>
+  );
 }
 
 ColorList.propTypes = {
