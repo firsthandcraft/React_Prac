@@ -82,14 +82,37 @@ function CrudInput({ callbackAdd }) {
   const handlerAdd = (event) => {
     // 부모 콜백 메서드 호출
     console.log(window.event.target);
-
     debugger;
+    //유효성 검사
+    //name의 입력여부 검사
+    if (!refInputName.current.value || !refInputName.current.value.trim()) {
+      alert("name을 입력하세요.");
+      refInputName.current.focus();
+      event.stopPropagation();
+      event.preventDefault();
+      return false;
+    }
+    //power의 입력여부 검사
+    if (!refInputPower.current.value || !refInputPower.current.value.trim()) {
+      alert("power을 입력하세요.");
+      refInputPower.current.focus();
+      event.stopPropagation();
+      event.preventDefault();
+      return false;
+    }
+    //Poxer값을 숫자로 바꾸시오
+    const power = Number(refInputPower.current.value);
+
     const newItem = {
       name: refInputName.current.value,
-      power: refInputPower.current.value
+      power: power
     };
     //CrudContainer.callbackAdd(doj)호출
     callbackAdd(newItem);
+
+    //input에 남아있는값 지우기
+    refInputName.current.value = null;
+    refInputPower.current.value = null;
   };
 
   // JSX로 화면 만들기. 조건부 렌더링: https://ko.reactjs.org/docs/conditional-rendering.html
