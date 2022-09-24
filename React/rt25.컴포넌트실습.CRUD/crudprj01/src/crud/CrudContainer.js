@@ -102,14 +102,20 @@ function CrudContainer({}) {
   );
 
   const callbackSave = useCallback(
-    (item) => {
+    (newitem) => {
       // newitem 으로 바뀐 새로운 배열 만들기. Array.map() 을 사용한다
       // ...생략
       debugger;
+      const newItems = items.map((item) => {
+        if (item.id === newitem.id) {
+          return newitem;
+        }
+        return item;
+      });
+
+      setItems(newItems); ////items=newItems;
     },
-    [
-      /* 메서드와 연관되는 상태(변수)명들을 기술 */
-    ]
+    [/* 메서드와 연관되는 상태(변수)명들을 기술 */ items]
   );
 
   const callbackAdd = useCallback(
@@ -162,12 +168,6 @@ function CrudContainer({}) {
   );
 }
 
-CrudContainer.propTypes = {
-  // props의 프로퍼티 타입 설정. https://ko.reactjs.org/docs/typechecking-with-proptypes.html
-  // 인자명: PropTypes.func.isRequired,
-  // 인자명: PropTypes.string,
-  // 인자명: PropTypes.oneOf(['News', 'Photos']),
-};
 CrudContainer.defaultProps = {
   // props의 디폴트 값 설정. https://ko.reactjs.org/docs/typechecking-with-proptypes.html
   // 인자명: () => {},

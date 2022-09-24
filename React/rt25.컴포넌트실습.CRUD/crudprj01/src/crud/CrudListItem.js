@@ -26,6 +26,11 @@ function CrudListItem({
 }) {
   const [isEditMode, setIsEditMode] = useState(false); // 상태값이 기본타입인 경우
 
+  // ref 만들기.
+  // const refInput = useRef();
+  const refInputName = useRef();
+  const refInputPower = useRef();
+
   // 이벤트 핸들러 작성.
   const handlerDel = () => {
     // 이벤트 핸들러는 화살표 함수로 만든다
@@ -54,11 +59,9 @@ function CrudListItem({
   const handlerSave = (event) => {
     // 이벤트 핸들러는 화살표 함수로 만든다
     console.log(window.event.target);
-    setIsEditMode(!isEditMode);
-
     //유효성 검사 CrudInput 참조하여 코드를 완성하시오
     //name의 입력여부 검사
-    if (!refInputName.current.value || !refInputName.current.value.trim()) {
+    if (!refInputName.current.value || "") {
       alert("name을 입력하세요.");
       refInputName.current.focus();
       event.stopPropagation();
@@ -66,7 +69,7 @@ function CrudListItem({
       return false;
     }
     //power의 입력여부 검사
-    if (!refInputPower.current.value || !refInputPower.current.value.trim()) {
+    if (!refInputPower.current.value || "") {
       alert("power을 입력하세요.");
       refInputPower.current.focus();
       event.stopPropagation();
@@ -74,6 +77,7 @@ function CrudListItem({
       return false;
     }
 
+    setIsEditMode(!isEditMode);
     //변경될 정보를 만든다.
     const newitem = {
       id: item.id,
@@ -83,11 +87,6 @@ function CrudListItem({
     //부모 콜백 메서드호출 . CrudContainer.callbackSave();
     callbackSave(newitem);
   };
-
-  // ref 만들기.
-  // const refInput = useRef();
-  const refInputName = useRef();
-  const refInputPower = useRef();
 
   // JSX로 화면 만들기. 조건부 렌더링: https://ko.reactjs.org/docs/conditional-rendering.html
   //power가 300이상인 사람은 글자색을 red, bold 로 출력되게 css를 적용하시오
