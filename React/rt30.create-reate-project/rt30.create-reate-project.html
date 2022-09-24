@@ -101,7 +101,7 @@
     step 1-04. 프로젝트 소스 커밋
         $ pwd                                   # 현재 작업하는 폴더 위치 확인
         $ ls                                    # package.json 파일이 보이는지 확인
-        
+
         $git status #파일의 추가, 변경, 삭제확인
         $ git add -AN                           # 신규 파일 추가
         $git status #파일의 추가, 변경, 삭제확인
@@ -130,6 +130,7 @@
     @@@@@@@@@@@@@@@@@@@@@@@@@
     step 1-21. prop-types 설치(필수)
         prop-types는 컴포넌트의 props 타입을 정의할 때 사용되는 라이브러리.
+        https://www.npmjs.com/package/prop-types
 
         $ npm install --save prop-types
 
@@ -142,8 +143,8 @@
 
     step 1-23. 리액트 라우터 설치(필수)
         react-router:
-        react-router-dom: 브라우저에서 사용되는 라우팅 라이브러리. 필수
-        react-router-native: 모바일 리액트에서 사용되는 라우팅 라이브러리
+        react-router-dom: 웹 브라우저에서 사용되는 라우팅 라이브러리. 필수
+        react-router-native: 앱용 모바일 리액트에서 사용되는 라우팅 라이브러리
 
         $ npm install --save react-router react-router-dom
 
@@ -158,13 +159,13 @@
 
 
     step 1-25. redux-saga 설치(필수)
-        redux-saga : redux에서 비동기로 액션을 처리하는 미들웨어
+        redux-saga : redux에서 비동기로 액션외부 api을 호출하는 미들웨어
 
         $ npm install --save redux-saga
 
 
     step 1-26. 비동기 처리(필수)
-        axios : rest api 호출 라이브러리
+        axios : rest api 실행 라이브러리
 
         $ npm install --save axios
 
@@ -216,6 +217,8 @@
         $ npm install --save bootstrap reactstrap
 
 
+    step 1-35. install react-icons https://www.npmjs.com/package/react-icons
+    $ npm install --save react-icons
 
 
 
@@ -316,9 +319,10 @@
 
         # .env 파일을 프로젝트 루트에 만들기
         $ pwd     # 현재 작업하는 폴더 위치 확인
-        $ ls      # package.json 파일이 보이는지 확인
+        $ ls -a     # package.json 파일이 보이는지 확인
         $ touch .env
         $ echo -e "SKIP_PREFLIGHT_CHECK=true \nPORT=15109" > .env
+        $ cat .env
 
         # .env  파일에 아래 내용 추가
         $ cat .env
@@ -328,14 +332,14 @@
 
     4-3. Prettier 설정
         Prettier는 코드 포맷터(Code Formatter)다.
-        스타일을 교정하려면 포맷터를 사용하자.
+        코드 스타일을 교정하려면 포맷터를 사용하자.
 
         prettier 사용되는 예시
             . 한 줄의 최대 길이는 얼마로 할 것인가?
             . 들여쓰기에 tab을 쓸 것인가? space를 쓸 것인가?
             . 문자 리터럴로  ' 를 쓸 것인가? " 쓸 것인가?
 
-        Prettier는 소스 코드를 저장하거나 git 커밋할 때 정의된 규칙에 따라 코드의 형식을 자동으로 수정한다.
+        Prettier는 소스 코드를 저장할때나 git 커밋할 때 정의된 규칙에 따라 코드의 형식을 자동으로 수정한다.
 
         prettier : Prettier 모듈
         eslint-config-react: react 프로젝트에 맞춰진 ESLint 규칙을 추가합니다.
@@ -350,7 +354,7 @@
 
         # .prettierrc.js 파일을 프로젝트 루트에 만들기
         $ pwd     # 현재 작업하는 폴더 위치 확인
-        $ ls      # package.json 파일이 보이는지 확인
+        $ ls -a     # package.json 파일이 보이는지 확인
         $ touch .prettierrc.js
         $ echo -e "module.exports = {\n}" > .prettierrc.js
         $ cat .prettierrc.js
@@ -373,7 +377,8 @@
 
 
     4-4. eslint 모듈
-        ESlint는 문법 오류를 잡아내고 특정 문법 요소를 사용하여 코드를 수정하기 위해 사용되는 모듈 입니다.
+        ESlint는 문법 오류를 잡아내기 위해 사용되는 모듈 입니다.
+        오류수정은prettier로
 
         airbnb ESLint 규칙을 사용하려면 아래 5개의 패키지들은 필수로 설치해야 합니다.
           . eslint
@@ -389,12 +394,34 @@
 
         # .eslintrc.js 파일을 프로젝트 루트에 만들기
         $ pwd     # 현재 작업하는 폴더 위치 확인
-        $ ls      # package.json 파일이 보이는지 확인
+        $ ls -a     # package.json 파일이 보이는지 확인
 
         설정 방법에는 npm init 을 사용하는 설정 방식과 수동 설정 방식 2가지가 있다.
 
+        $ ls
         # 방법1. npm init 을 사용하는 설정 방식(비추천)
         $ npm init @eslint/config       #eslint설정
+
+            #? How would you like to use ESLint? ...
+                To check syntax only
+                To check syntax and find problems
+            > To check syntax, find problems, and enforce code style
+
+            #√ How would you like to use ESLint? · style
+            # What type of modules does your project use? · esm
+            # Which framework does your project use? · react
+            # Does your project use TypeScript? » No
+            # Where does your code run? ...  (Press <space> to select, <a> to toggle all, <i> to invert selection)
+            √ Browser
+            # How would you like to define a style for your project? · guide
+            # Which style guide do you want to follow? ...
+                > Airbnb: https://github.com/airbnb/javascript
+                # Would you like to install them now? Yes
+                #Which package manager do you want to use? ...
+            > npm
+
+           $ ls -a
+
 
 
 
@@ -542,7 +569,7 @@
         };
 
 
-    4-6. 전체 소스 포맷팅하기
+    4-6. 전체 소스 ESlint 규칙에 맞게 포맷팅 변경 하기
         정의한 ESLint 룰을 지키고 있지 않은 파일과 내용을 확인하고
         prettier 의 룰에 맞게 코드를 수정 할 수 있습니다.
 
@@ -560,11 +587,8 @@
         . lint-staged: git 의 stage된 파일들에 특정 동작을 수행할 수 있도록 해준다.
         . lint-staged와 husky를 사용하여 git 이벤트에 Prettier 명령어를 연동 설정.
 
+        #commit 전에 자동으로 prettier 적용하기
         $ npm install --save-dev husky  lint-staged
-
-        ############
-        commit 전에 자동으로 prettier 적용하기
-        ############
 
         packages.json 파일 맨 아래에 내용 추가
 
@@ -682,7 +706,7 @@
     |-- .env
     |-- .prettierrc.js
     |-- .eslintrc.js
-    |-- jsconfig.json
+//    |-- jsconfig.json
     |-- package.json
     `-- README.md
 
@@ -715,7 +739,6 @@
     ##################################
     12. 프로젝트 초기 설정
     ##################################
-
 
     ##################################
     13. 프로젝트에 컴포넌트 추가
