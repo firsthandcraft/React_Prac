@@ -18,117 +18,8 @@ import TodoInput from './TodoInput';
 const StyledTodoContainer = styled.div`
   /* styled 설정. https://styled-components.com/docs/basics#adapting-based-on-props */
   text-align: center;
-
   button {
     border-style: groove;
-  }
-
-  input {
-    border-style: groove;
-    width: 200px;
-  }
-
-  .shadow {
-    box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.03);
-  }
-
-  input:focus {
-    outline: none;
-  }
-
-  .inputBox {
-    background: white;
-    height: 50px;
-    line-height: 50px;
-    border-radius: 5px;
-  }
-
-  .inputBox input {
-    border-style: none;
-    font-size: 0.9rem;
-  }
-
-  .addContainer {
-    float: right;
-    background: linear-gradient(to right, #6478fb, #8763fb);
-    display: inline-block;
-    width: 3rem;
-    border-radius: 0 5px 5px 0;
-  }
-
-  .addBtn {
-    color: white;
-    vertical-align: middle;
-  }
-
-  .closeModalBtn {
-    color: #62acde;
-  }
-
-  .modal-mask {
-    position: fixed;
-    z-index: 9998;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: table;
-    transition: opacity 0.3s ease;
-  }
-
-  .modal-wrapper {
-    display: table-cell;
-    vertical-align: middle;
-  }
-
-  .modal-container {
-    width: 300px;
-    margin: 0px auto;
-    padding: 20px 30px;
-    background-color: #fff;
-    border-radius: 2px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
-    transition: all 0.3s ease;
-    font-family: Helvetica, Arial, sans-serif;
-  }
-
-  .modal-header h3 {
-    margin-top: 0;
-    color: #62acde;
-  }
-
-  .modal-body {
-    margin: 20px 0;
-  }
-
-  .modal-default-button {
-    float: right;
-  }
-
-  .modal-enter {
-    opacity: 0;
-  }
-
-  .modal-leave-active {
-    opacity: 0;
-  }
-
-  .modal-enter .modal-container,
-  .modal-leave-active .modal-container {
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
-  }
-
-  .list-enter-active,
-  .list-leave-active {
-    transition: all 1s;
-  }
-
-  .list-enter,
-  .list-leave-to {
-    opacity: 0;
-    transform: translateY(30px);
   }
 `;
 
@@ -185,12 +76,20 @@ function TodoContainer({ ...props }) {
     [todoItems],
   );
 
+  const callbackAddTodo = useCallback(
+    (value)=>{
+      const maxid = items.map((id)) => {
+        return todoItems.id;
+      }
+      debugger;
+    }
+  );
   // JSX로 화면 만들기. 조건부 렌더링: https://ko.reactjs.org/docs/conditional-rendering.html
   return (
     <StyledTodoContainer>
       <div>
         <TodoHeader></TodoHeader>
-        {/* <div className="inputBox shadow">
+        {/*<div className="inputBox shadow">
           <input type="text" placeholder="Type what you have to do" />
           <span className="addContainer">
             <i aria-hidden="true" className="addBtn fas fa-plus"></i>
@@ -213,7 +112,7 @@ function TodoContainer({ ...props }) {
             </div>
           </div>
         </div> */}
-        <TodoInput></TodoInput>
+        <TodoInput callbackAddTodo={callbackAddTodo}></TodoInput>
         <TodoList
           todoItems={todoItems}
           callbackDoneToggle={callbackDoneToggle}

@@ -84,7 +84,6 @@ function TodoList({ todoItems, callbackDoneToggle, callbackRemoveTodo }) {
     todoItems &&
     todoItems.map((item) => {
       const checked = item.done == true ? 'checked' : null;
-
       return (
         <li
           key={item.id}
