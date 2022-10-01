@@ -76,14 +76,9 @@ function TodoContainer({ ...props }) {
     [todoItems],
   );
 
-  const callbackAddTodo = useCallback(
-    (value)=>{
-      const maxid = items.map((id)) => {
-        return todoItems.id;
-      }
-      debugger;
-    }
-  );
+  const callbackAddTodo = useCallback((value) => {
+    debugger;
+  });
   // JSX로 화면 만들기. 조건부 렌더링: https://ko.reactjs.org/docs/conditional-rendering.html
   return (
     <StyledTodoContainer>
