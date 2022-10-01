@@ -42,12 +42,14 @@
     3. 서버 시작
     ##################################
         $ ls                # package.json 파일이 보이는지 확인
+        $npm install
         $ npm run start     # package.json 보이면 서버 실행
 
 
     ##################################
     4. 앱 요구사항
     ##################################
+    #퍼블리싱 화면 만들기
         1. 컴포넌트 트리 만들기
             1-1. TodoContainer 컴포넌트
             1-2. TodoHeader 컴포넌트
@@ -170,11 +172,13 @@
     ##################################
 
     13-1. 라우팅 관련 폴더 및 파일 생성
-        $ mkdir -p ./src/containers/home
-        $ touch ./src/containers/home/HomeContainer.js
 
         $ mkdir -p ./src/pages
         $ touch ./src/pages/PageHome.js
+
+        $ mkdir -p ./src/containers/home
+        $ touch ./src/containers/home/HomeContainer.js
+
 
 
     13-2. BrowserRouter 추가
@@ -442,10 +446,11 @@
         const callbackClearAll = useCallback(() => {
             // state 변경
             debugger;
+            todoItems=[];
         }, []);
 
     step 24-11 TodoContainer 컴포넌트 JSX에 callbackClearAll props 내림 설정을 추가한다.
-        <TodoInput callbackClearAll={callbackClearAll}></TodoInput>
+        <TodoFooter callbackClearAll={callbackClearAll}></TodoFooter>
 
 
     ##################################
@@ -549,8 +554,8 @@
             className={item.done ? 'checked' : null}
             onClick={(e) => {
                 // click 이벤트 취소. 버블링 방지
-                e.stopPropagation();
-
+                //const id =Number(e.target.dataset.id);
+                 e. stopPropagation();
                 handlerDoneToggle(item.id);
             }}
         >
