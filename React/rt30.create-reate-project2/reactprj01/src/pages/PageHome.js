@@ -19,6 +19,7 @@ import CrudContainer from '../containers/crud/CrudContainer';
 import TodoContainer from '../containers/todo/TodoContainer';
 import SideBar from './SideBar';
 import NavBars from './NavBars';
+import CounterContainer from '../containers/counter/CounterContainer';
 const StyledPageHome = styled.div`
   /* styled 설정. https://styled-components.com/docs/basics#adapting-based-on-props */
   * {
@@ -78,11 +79,7 @@ function PageHome({ ...props }) {
     <StyledPageHome>
       <SideBar></SideBar>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/recipes" element={<RecipesContainer />} />
-        <Route path="/starrating" element={<StarRatingContainer />} />
-        <Route path="/crud" element={<CrudContainer />} />
-        <Route path="/todo" element={<TodoContainer />} />
+        <Route path="/counter" element={<CounterContainer />}></Route>
       </Routes>
     </StyledPageHome>
   );
