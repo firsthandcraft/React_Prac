@@ -1,7 +1,20 @@
+/*
+  CommonJS 모듈 방식 : require 사용
+    var module = require('./MyModule');
+
+
+  ES2015 모듈 방식 : import/export 사용
+    import React from "redux";
+    import {Component} from "redux";
+    import React, {Component} from "redux";
+    import React as rd from "redux";
+    import * as rd from "redux";
+*/
+
 // Module1.js
 const a = 1;
 const b = 2;
-export { a }; //console.log(a, b, c);
+const d = 4;
+export { a };
 export const c = 3;
-export default b; // default 는 파일당 1번만 사용 가능
-//a,b,c세개를 내보냈고 내보내는 방식이 각각다르다.  import b, { a, c } from './module1';
+export default b; // export default 는 파일당 1번만 사용 가능.
