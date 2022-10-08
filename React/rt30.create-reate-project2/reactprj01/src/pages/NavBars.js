@@ -14,11 +14,19 @@ import styled, { css } from 'styled-components';
 
 const StyledNavbars = styled.div`
   /* styled 설정. https://styled-components.com/docs/basics#adapting-based-on-props */
+  .navbar {
+    background-color: #060b26;
+    height: 80px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
 `;
 
 function Navbars({ ...props }) {
   // useState 를 사용한 컴포넌트의 상태값 설정
-  const [변수명, set변수명] = useState('기본값'); // 상태값이 기본타입인 경우
+  const [isSidebar, setIsSidebar] = useState(false);
+  ('기본값'); // 상태값이 기본타입인 경우
   const [state, setState] = useState({ id: 0, name: '', age: 0 }); // 상태값이 참조타입 경우
 
   // useReducer 를 사용한 컴포넌트의 상태값 설정. 리듀서는 현재 상태를 받아서 새 상태를 반환하는 함수다
@@ -64,11 +72,37 @@ function Navbars({ ...props }) {
     // 이벤트 핸들러는 화살표 함수로 만든다
     console.log(e.target);
   };
-
+  // 이벤트 핸들러 작성.
+  const showSidebar = (e) => {
+    // 이벤트 핸들러는 화살표 함수로 만든다
+    console.log(e.target);
+    setIsSidebar(!isSidebar);
+  };
+  // 이벤트 핸들러 작성.
+  const handlerIsSidebar = (e) => {
+    // 이벤트 핸들러는 화살표 함수로 만든다
+    console.log(e.target);
+    setIsSidebar(!isSidebar);
+  };
   // JSX로 화면 만들기. 조건부 렌더링: https://ko.reactjs.org/docs/conditional-rendering.html
   return (
     <StyledNavbars>
-      <div>Navbars</div>
+      <div className="navbar">
+        <span className="menu-bars" onClick={handlerIsSidebar}>
+          <svg
+            stroke="currentColor"
+            fill="currentColor"
+            strokeWidth="0"
+            viewBox="0 0 448 512"
+            height="1em"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+            style={{ color: 'rgb(255, 255, 255)' }}
+          >
+            <path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path>
+          </svg>
+        </span>
+      </div>
     </StyledNavbars>
   );
 }

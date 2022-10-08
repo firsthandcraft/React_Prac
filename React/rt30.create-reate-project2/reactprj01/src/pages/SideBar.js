@@ -11,23 +11,29 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-
+import { Routes, Route, NavLink } from 'react-router-dom';
+import { IconContext } from 'react-icons';
+import * as FaIcons from 'react-icons/fa';
+import * as AiIcons from 'react-icons/ai';
+import { SidebarData } from '../constants/SidebarData';
 const StyledsideBar = styled.div`
   /* styled 설정. https://styled-components.com/docs/basics#adapting-based-on-props */
+  .menu-bars {
+    margin-left: 2rem;
+    font-size: 2rem;
+    background: none;
+  }
   .navbar {
     background-color: #060b26;
     height: 80px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
   }
-
-  .menu-bars {
-    margin-left: 2rem;
-    font-size: 2rem;
-    background: none;
-  }
-
   .nav-menu {
     background-color: #060b26;
     width: 250px;
@@ -38,11 +44,13 @@ const StyledsideBar = styled.div`
     top: 0;
     left: -100%;
     transition: 850ms;
+    z-index: 100;
   }
 
   .nav-menu.active {
     left: 0;
     transition: 350ms;
+    z-index: 100;
   }
 
   .nav-text {
@@ -137,14 +145,26 @@ function sideBar({ ...props }) {
     console.log(e.target);
     setIsSidebar(!isSidebar);
   };
-
+  // 이벤트 핸들러 작성.
+  const handlerIsSidebar = (e) => {
+    // 이벤트 핸들러는 화살표 함수로 만든다
+    console.log(e.target);
+    setIsSidebar(!isSidebar);
+  }; // 이벤트 핸들러 작성.
+  const handlerNavLink = (e) => {
+    console.log(e.targer);
+    // e.stopPropagation();
+    debugger;
+    setIsSidebar(false);
+  };
   // JSX로 화면 만들기. 조건부 렌더링: https://ko.reactjs.org/docs/conditional-rendering.html
   //className={isSidebar ? 'nav-menu active' : 'nav-menu'}
   //style={{ color: 'rgb(255, 255, 255)' }}
+  //      <div className={isSidebar ? 'nav-menu active' : 'nav-menu'}>
   return (
     <StyledsideBar>
       <div className="navbar">
-        <span className="menu-bars">
+        <span className="menu-bars" onClick={handlerIsSidebar}>
           <svg
             stroke="currentColor"
             fill="currentColor"
@@ -180,26 +200,64 @@ function sideBar({ ...props }) {
             </span>
           </li>
           <li className="nav-text">
-            <a to="/">home</a>
+            <NavLink to="/" onClick={handlerNavLink}>
+              home
+            </NavLink>
           </li>
           <li className="nav-text">
-            <a to="/service">service</a>
+            <NavLink to="/service" onClick={handlerNavLink}>
+              service
+            </NavLink>
           </li>
           <li className="nav-text">
-            <a to="/recipes">recipes</a>
+            <NavLink to="/recipes" onClick={handlerNavLink}>
+              recipes
+            </NavLink>
           </li>
           <li className="nav-text">
-            <a to="/starrating">starrating</a>
+            <NavLink to="/starrating" onClick={handlerNavLink}>
+              starrating
+            </NavLink>
           </li>
           <li className="nav-text">
-            <a to="/crud">crud</a>
+            <NavLink to="/crud" onClick={handlerNavLink}>
+              crud
+            </NavLink>
           </li>
           <li className="nav-text">
-            <a to="/todo" className={({ isActive }) => (isActive ? 'active' : 'inactive')}>
+            <NavLink to="/todo" onClick={handlerNavLink} className={({ isActive }) => (isActive ? 'active' : 'inactive')}>
               todo
-            </a>
+            </NavLink>
           </li>
         </ul>
+        <IconContext.Provider value={{ color: '#fff' }}>
+          <div className="navbar">
+            <NavLink to="#" className="menu-bars">
+              <FaIcons.FaBars onClick={handlerIsSidebar} />
+            </NavLink>
+          </div>
+          {isSidebar && (
+            <nav className="nav-menu active">
+              <ul className="nav-menu-items" onClick={handlerIsSidebar}>
+                <li className="navbar-toggle">
+                  <NavLink to="#" className="menu-bars">
+                    <AiIcons.AiOutlineClose />
+                  </NavLink>
+                </li>
+                {SidebarData.map((item, index) => {
+                  return (
+                    <li key={index} className={item.cName}>
+                      <NavLink to={item.path}>
+                        {item.icon}
+                        <span>{item.title}</span>
+                      </NavLink>
+                    </li>
+                  );
+                })}
+              </ul>
+            </nav>
+          )}
+        </IconContext.Provider>
       </div>
     </StyledsideBar>
   );

@@ -4,7 +4,7 @@ import SideBar from './pages/SideBar';
 function App() {
   return (
     <div>
-      <SideBar />
+      <PageHome />
     </div>
   );
 }
