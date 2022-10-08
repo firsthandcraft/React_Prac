@@ -100,6 +100,9 @@ function CounterContainer({ ...props }) {
     // 이벤트 핸들러는 화살표 함수로 만든다
     console.log(e.target);
     // setCounter(counter - 1);
+    const action = actions.setTaskReducer({ counter: counter - 1 });
+    debugger;
+    dispatch(action);
   };
   // JSX로 화면 만들기. 조건부 렌더링: https://ko.reactjs.org/docs/conditional-rendering.html
   return (
