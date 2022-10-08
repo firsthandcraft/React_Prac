@@ -120,7 +120,7 @@ const StyledTodoInput = styled.div`
   }
 `;
 
-function TodoInput({ ...props }) {
+function TodoInput({ callbackAddTodo }) {
   // useState 를 사용한 컴포넌트의 상태값 설정
   const [isShowModal, setIsShowModal] = useState(false); // 상태값이 기본타입인 경우
 
@@ -173,21 +173,24 @@ function TodoInput({ ...props }) {
     //debugger;
     // if(){}
     callbackAddTodo;
+
+    //버블링 방지이벤트 취소
+    e.stopPropagation();
+    e.preventDefault();
+
+    //ref 이름.current속성명 ==
+    const value = refInputTodo.current.value;
+
+    //input태그에 빈문자역이 입력되는 경우는 modal ckddl cnffurehlrp
+    /*if (value === null || value === undefined || value === '' || value.trim() === '')같은말임*/
+    if (!value || !value.trim()) {
+      setIsShowModal(true); //    setIsShowModal=(true);
+      return false;
+    }
+    callbackAddTodo(value);
+
+    refInputTodo.current.value = '';
   };
-  //버블링 방지
-  e.stopPropargation();
-  e.preventDefault();
-
-  const value = refInputTodo.current.value;
-
-  if (!value) {
-    setIsShowModal(ture);
-    return;
-  }
-  callbackAddTodo(value);
-
-  refInputTodo.current.value = '';
-
   // JSX로 화면 만들기. 조건부 렌더링: https://ko.reactjs.org/docs/conditional-rendering.html
   return (
     <StyledTodoInput>
@@ -196,7 +199,7 @@ function TodoInput({ ...props }) {
           type="text"
           placeholder="Type what you have to do"
           ref={refInputTodo}
-          onKeyUp={(e) => e.keyCode === 13 && handlerAddTodo()}
+          onKeyUp={(e) => e.keyCode === 13 && handlerAddTodo(e)}
         />
         <span className="addContainer" onClick={handlerAddTodo}>
           <i aria-hidden="true" className="addBtn fas fa-plus"></i>
@@ -233,7 +236,10 @@ TodoInput.propTypes = {
 };
 TodoInput.defaultProps = {
   // props의 디폴트 값 설정. https://ko.reactjs.org/docs/typechecking-with-proptypes.html
-  callbackAddTodo: () => {},
+  callbackAddTodo: () => {
+    debugger;
+  },
+
   // 인자명: [],
 };
 
