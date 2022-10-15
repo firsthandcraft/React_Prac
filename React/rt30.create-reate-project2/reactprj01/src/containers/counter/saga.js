@@ -4,8 +4,10 @@ import { action함수 as actions, action상수 as types } from './action';
 import * as api from './api';
 
 /* saga 이펙트 함수 설명
-
- * saga 실행 순서 : TPC(take[Latest}, put, call)
+                      //take  -action을 통해 가져온다.
+                      //api로 보낸다. -call
+                      //reduser 에 넣는다. put
+ * saga 실행 순서 : TCP(take[Latest}, put, call)
 
  * takeLatest      마지막 요청만 처리. 기존에 진행 중인 작업은 취소됨.
  *                 클릭 실수로 2번 했을때, 앞 이벤트 무시 마지막 이벤트 실행(보통 이거 많이씀)
@@ -18,7 +20,7 @@ import * as api from './api';
  * call            call은 함수를 동기식으로 실행한다(동기식: 외부 api가 리턴할때까지 기다림).
  *                 함수의 첫 번째 파라미터는 함수, 나머지 파라미터는 해당 함수에 넣을 인수이다.
  *
- * delay           설정된 시간 이후에 resolve하는 Promise객체를 리턴한다.
+ * *** delay           설정된 시간 이후에 resolve하는 Promise객체를 리턴한다.
  * all             all함수를 사용해서 제너레이터 함수를 배열의 형태로 인자로 넣어주면,
  *                 제너레이터 함수들이 병행적으로 동시에 실행되고, 전부 resolve될때까지 기다린다. 받은 이펙트를 등록 (실행 아님, 등록임!!)
  *                 Promise.all과 비슷하다고 보면된다.

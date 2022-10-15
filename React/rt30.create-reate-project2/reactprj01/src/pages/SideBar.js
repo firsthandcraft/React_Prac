@@ -205,8 +205,8 @@ function sideBar({ ...props }) {
             </NavLink>
           </li>
           <li className="nav-text">
-            <NavLink to="/service" onClick={handlerNavLink}>
-              service
+            <NavLink to="/counter" onClick={handlerNavLink}>
+              counter
             </NavLink>
           </li>
           <li className="nav-text">

@@ -79,6 +79,11 @@ function PageHome({ ...props }) {
     <StyledPageHome>
       <SideBar></SideBar>
       <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/recipes" element={<RecipesContainer />} />
+        <Route path="/starrating" element={<StarRatingContainer />} />
+        <Route path="/crud" element={<CrudContainer />} />
+        <Route path="/todo" element={<TodoContainer />} />
         <Route path="/counter" element={<CounterContainer />}></Route>
       </Routes>
     </StyledPageHome>

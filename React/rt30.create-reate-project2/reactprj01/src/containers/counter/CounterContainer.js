@@ -18,6 +18,28 @@ import { action함수 as actions, action상수 as types } from './action';
 const StyledCounterContainer = styled.div`
   /* styled 설정. https://styled-components.com/docs/basics#adapting-based-on-props */
   text-align: center;
+
+  .loadingbox {
+    position: absolute;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-color: rgba(255, 0,0,0.5); */
+    z-index: 100;
+  }
+
+  .loadingbox > .loadingbar {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    top: calc(50% - 150px);
+    left: calc(50% - 150px);
+    z-index: 200;
+  }
 `;
 
 function CounterContainer({ ...props }) {
@@ -51,14 +73,12 @@ function CounterContainer({ ...props }) {
   const refIsMounted = useRef(false);
   useEffect(
     () => {
-      if (refIsMounted.current) {
-        // 업데이트 될 때마다 실행됨. 여러번. state 가 변경될 때마다
-        // console.log('CounterContainer >> componentDidUpdate');
-      } else {
-        // 마운트 완료 후에 실행됨. 한번만. focus 줄때
-        // console.log('CounterContainer >> componentDidMount');
-        refIsMounted.current = true;
-      }
+      debugger;
+      // http://localhost:5050/counter
+      const action값 = actions.getTaskSaga({}); //
+      // 생성된 action 을 saga 로 보내기 위해 dispatch 하기
+      dispatch(action값); //외부 서버에 데이터를 가져오라는 명령
+
       return () => {
         // 언마운트 직전에 한번만 실행됨.
         // console.log('CounterContainer >> componentWillUmount');
@@ -90,21 +110,44 @@ function CounterContainer({ ...props }) {
     // 이벤트 핸들러는 화살표 함수로 만든다
     console.log(e.target);
     debugger;
+    //->reducer를 사용할때
     // setCounter(counter + 1);
-    const action = actions.setTaskReducer({ counter: counter + 1 });
+    //const action = actions.setTaskReducer({ counter: counter + 1 });
+    //dispatch(action);
+
     debugger;
-    dispatch(action);
+    //saga를 사용할때
+    // http://localhost:5050/counter?step=1   ==> 1 씩 증가
+    const payload = { step: +1 };
+    const action = actions.setTaskSaga(payload);
+    // 액션함수를 이용하여 전달될 action 생성
+    dispatch(action); // action 을 saga 로 (dispatch )보내기
   };
   // 이벤트 핸들러 작성.
   const handlerDecrement = (e) => {
     // 이벤트 핸들러는 화살표 함수로 만든다
     console.log(e.target);
+
+    //->reducer를 사용할때
     // setCounter(counter - 1);
-    const action = actions.setTaskReducer({ counter: counter - 1 });
+    //const action = actions.setTaskReducer({ counter: counter - 1 });
     debugger;
-    dispatch(action);
+
+    //saga를 사용할때
+    // http://localhost:5050/counter?step=-1   ==> -1 씩 증가
+    const payload = { step: -1 };
+    const action = actions.setTaskSaga(payload); // 액션함수를 이용하여 전달될 action 생성
+    dispatch(action); //dispatch는 saga로
   };
+
   // JSX로 화면 만들기. 조건부 렌더링: https://ko.reactjs.org/docs/conditional-rendering.html
+  if (isLoading) {
+    return (
+      <div className="loadingbox">
+        <img className="loadingbar" src="/assets/images/loadingbar.gif" alt="" />
+      </div>
+    );
+  }
   return (
     <StyledCounterContainer>
       <div>
