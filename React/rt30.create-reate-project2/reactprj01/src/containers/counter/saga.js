@@ -29,7 +29,7 @@ import * as api from './api';
 export function* getPromise(action) {
   try {
     yield put(actions.setLoading(true)); // 액션 디스패치
-    // yield delay(2000); // 2초 기다리기
+    yield delay(2000); // 2초 기다리기
     const result = yield call(api.getPromise, action.payload);
 
     // 액션함수를 이용하여 전달될 payload 생성
@@ -46,11 +46,11 @@ export function* getPromise(action) {
 export function* getTaskSaga(action) {
   try {
     yield put(actions.setLoading(true)); // 액션 디스패치
-    // yield delay(2000); // 2초 기다리기
-    debugger;
+    yield delay(2000); // 2초 기다리기
+    //debugger;
     const result = yield call(api.callApi, action.payload);
     // 액션함수를 이용하여 전달될 payload 생성
-    debugger;
+    //debugger;
     const payload = { counter: result.data };
     yield put(actions.setTaskReducer(payload)); // payload를 리듀서로 dispatch 하기
     yield put(actions.setError(''));
@@ -64,11 +64,11 @@ export function* getTaskSaga(action) {
 export function* setTaskSaga(action) {
   try {
     yield put(actions.setLoading(true)); // 액션 디스패치
-    // yield delay(2000); // 2초 기다리기
-    debugger;
+    yield delay(2000); // 2초 기다리기
+    //debugger;
     const result = yield call(api.callApi, action.payload);
     // 액션함수를 이용하여 전달될 payload 생성
-    debugger;
+    //debugger;
     const payload = { counter: result.data };
     yield put(actions.setTaskReducer(payload)); // payload를 리듀서로 dispatch 하기
     yield put(actions.setError(''));

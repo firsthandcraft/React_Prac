@@ -14,32 +14,11 @@ import styled, { css } from 'styled-components';
 // import { BrowserRouter, Routes, Route, NavLink, useParams, useLocation, useHistory, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { action함수 as actions, action상수 as types } from './action';
+import Counter from './components/Counter';
+import LoadingBox from './components/LoadingBox';
 
 const StyledCounterContainer = styled.div`
   /* styled 설정. https://styled-components.com/docs/basics#adapting-based-on-props */
-  text-align: center;
-
-  .loadingbox {
-    position: absolute;
-    text-align: center;
-    padding: 0;
-    margin: 0;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* background-color: rgba(255, 0,0,0.5); */
-    z-index: 100;
-  }
-
-  .loadingbox > .loadingbar {
-    position: relative;
-    padding: 0;
-    margin: 0;
-    top: calc(50% - 150px);
-    left: calc(50% - 150px);
-    z-index: 200;
-  }
 `;
 
 function CounterContainer({ ...props }) {
@@ -57,23 +36,23 @@ function CounterContainer({ ...props }) {
   // const history = useHistory();
 
   // useState 를 사용한 컴포넌트의 상태값 설정
-  const [header, setHeader] = useState('리덕스 사용app'); // 상태값이 기본타입인 경우
+  const [header, setHeader] = useState('redux 사용 앱'); // 상태값이 기본타입인 경우
   //const [welcome, setWelcome] = useState('HELLOWORLD'); // 상태값이 기본타입인 경우
   // const [counter, setCounter] = useState(4); // 상태값이 기본타입인 경우
-  const [callapi, setCallapi] = useState(false); // 상태값이 기본타입인 경우
+  const [callapi, setCallapi] = useState(true); // 상태값이 기본타입인 경우
   const [state, setState] = useState({ id: 0, name: '', age: 0 }); // 상태값이 참조타입 경우
 
   // useReducer 를 사용한 컴포넌트의 상태값 설정. 리듀서는 현재 상태를 받아서 새 상태를 반환하는 함수다
   const [리듀서, set리듀서] = useReducer((oldvalue, newvalue) => ({ ...oldvalue, ...newvalue }), { id: 0, name: '', age: 0 }); // 리듀서(reducer) 방식의 상태값 설정
 
   // ref 만들기.
-  const refInputApi = useRef();
+  //const refInputApi = useRef();
 
   // refIsMounted는 생명주기의 마운트와 업데이트를 구분하기 위한 ref
   const refIsMounted = useRef(false);
   useEffect(
     () => {
-      debugger;
+      //debugger;
       // http://localhost:5050/counter
       const action값 = actions.getTaskSaga({}); //
       // 생성된 action 을 saga 로 보내기 위해 dispatch 하기
@@ -109,13 +88,13 @@ function CounterContainer({ ...props }) {
   const handlerIncrement = (e) => {
     // 이벤트 핸들러는 화살표 함수로 만든다
     console.log(e.target);
-    debugger;
+    //debugger;
     //->reducer를 사용할때
     // setCounter(counter + 1);
     //const action = actions.setTaskReducer({ counter: counter + 1 });
     //dispatch(action);
 
-    debugger;
+    //debugger;
     //saga를 사용할때
     // http://localhost:5050/counter?step=1   ==> 1 씩 증가
     const payload = { step: +1 };
@@ -131,7 +110,7 @@ function CounterContainer({ ...props }) {
     //->reducer를 사용할때
     // setCounter(counter - 1);
     //const action = actions.setTaskReducer({ counter: counter - 1 });
-    debugger;
+    //debugger;
 
     //saga를 사용할때
     // http://localhost:5050/counter?step=-1   ==> -1 씩 증가
@@ -141,14 +120,17 @@ function CounterContainer({ ...props }) {
   };
 
   // JSX로 화면 만들기. 조건부 렌더링: https://ko.reactjs.org/docs/conditional-rendering.html
-  if (isLoading) {
+  /* if (isLoading) {
     return (
       <div className="loadingbox">
         <img className="loadingbar" src="/assets/images/loadingbar.gif" alt="" />
       </div>
     );
+  }*/
+  if (isLoading) {
+    return <LoadingBox></LoadingBox>;
   }
-  return (
+  /*return (
     <StyledCounterContainer>
       <div>
         <h1>{header}</h1>
@@ -162,6 +144,17 @@ function CounterContainer({ ...props }) {
         <button onClick={handlerDecrement}>빼줘</button>
       </div>
     </StyledCounterContainer>
+  );
+}*/
+  return (
+    <Counter
+      welcome={welcome}
+      counter={counter}
+      callapi={callapi}
+      handlerChangeCallapi={handlerChangeCallapi}
+      handlerIncrement={handlerIncrement}
+      handlerDecrement={handlerDecrement}
+    ></Counter>
   );
 }
 

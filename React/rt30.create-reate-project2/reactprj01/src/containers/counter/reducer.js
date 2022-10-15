@@ -21,7 +21,7 @@ const setLoading = (state, payload) => {
 
 const setTaskReducer = (state, payload) => {
   return produce(state, (draft) => {
-    debugger;
+    //debugger;
     // draft.상태값이름.push(payload);
     draft.counter = payload.counter;
     draft.isLoading = false;
@@ -43,7 +43,7 @@ const reducerCounter = (state = state컨테이너명, action) => {
     case types.SET_LOADING:
       return setLoading(state, action.payload);
     case types.SET_TASK_REDUCER:
-      debugger;
+      //debugger;
       return setTaskReducer(state, action.payload);
     default:
       return state;
