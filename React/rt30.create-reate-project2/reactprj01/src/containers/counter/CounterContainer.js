@@ -34,14 +34,14 @@ function CounterContainer({ ...props }) {
 
   // 이전 경로 useHistory() 사용 */
   // const history = useHistory();
-
+  /*
   // useState 를 사용한 컴포넌트의 상태값 설정
   const [header, setHeader] = useState('redux 사용 앱'); // 상태값이 기본타입인 경우
   //const [welcome, setWelcome] = useState('HELLOWORLD'); // 상태값이 기본타입인 경우
   // const [counter, setCounter] = useState(4); // 상태값이 기본타입인 경우
   const [callapi, setCallapi] = useState(true); // 상태값이 기본타입인 경우
   const [state, setState] = useState({ id: 0, name: '', age: 0 }); // 상태값이 참조타입 경우
-
+*/
   // useReducer 를 사용한 컴포넌트의 상태값 설정. 리듀서는 현재 상태를 받아서 새 상태를 반환하는 함수다
   const [리듀서, set리듀서] = useReducer((oldvalue, newvalue) => ({ ...oldvalue, ...newvalue }), { id: 0, name: '', age: 0 }); // 리듀서(reducer) 방식의 상태값 설정
 
@@ -71,13 +71,17 @@ function CounterContainer({ ...props }) {
   // callback 메서드 작성. callback 메서드는 부모의 공유 상태값을 변경하기 위해서 사용된다.
   const callback = useCallback(
     (param) => {
+      const payload = param;
+      const action = actions.setTaskSaga(payload);
+      // 액션함수를 이용하여 전달될 action 생성
+      dispatch(action); // action 을 saga 로 (dispatch )보내기
       // state 변경
     },
     [
       /* 연관배열: 메서드와 연관되는 상태(변수)명들을 기술 */
     ],
   );
-
+  /*
   // 이벤트 핸들러 작성.
   const handlerChangeCallapi = (e) => {
     // 이벤트 핸들러는 화살표 함수로 만든다
@@ -117,7 +121,7 @@ function CounterContainer({ ...props }) {
     const payload = { step: -1 };
     const action = actions.setTaskSaga(payload); // 액션함수를 이용하여 전달될 action 생성
     dispatch(action); //dispatch는 saga로
-  };
+  };*/
 
   // JSX로 화면 만들기. 조건부 렌더링: https://ko.reactjs.org/docs/conditional-rendering.html
   /* if (isLoading) {
@@ -146,16 +150,7 @@ function CounterContainer({ ...props }) {
     </StyledCounterContainer>
   );
 }*/
-  return (
-    <Counter
-      welcome={welcome}
-      counter={counter}
-      callapi={callapi}
-      handlerChangeCallapi={handlerChangeCallapi}
-      handlerIncrement={handlerIncrement}
-      handlerDecrement={handlerDecrement}
-    ></Counter>
-  );
+  return <Counter welcome={welcome} counter={counter} callback={callback}></Counter>;
 }
 
 CounterContainer.propTypes = {
