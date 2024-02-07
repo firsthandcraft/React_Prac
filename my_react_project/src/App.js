@@ -3,6 +3,7 @@ import { Fragment } from 'react';
 import Dice from './Dice';
 import HandIcon from './HandIcon';
 import HandButton from './HandButton';
+import Button from './Button';
 
 const me = 'rock';
 let other = '';
@@ -20,9 +21,7 @@ const WINS = {
 
 function handleClick1(s){
   other = s;
-  
   console.log(s);
-
 }
 function App() {
   const handleClick = (value) => console.log(value);
@@ -40,15 +39,23 @@ function App() {
         <Dice color="red" num={2}/>
         <hr/>
         <div style={{ background: 'blue' }}>
+          <p>컴포넌트개념</p>
           <HandIcon value="rock" />
           <HandIcon value="scissor" />
           <HandIcon value="paper" />
         </div>
         <hr/>
         <div>
+        <p>prop개념알기</p>
         <HandButton value="rock" onClick={handleClick} />
         <HandButton value="scissor" onClick={handleClick} />
         <HandButton value="paper" onClick={handleClick} />
+        </div>
+        <div> 
+          <p>children배우기</p>
+          <Button>던지기</Button>
+        <Button>처음부터</Button>
+        <Dice color="red" num={4} />
         </div>
       </Fragment>
     </div>
