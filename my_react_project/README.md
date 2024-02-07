@@ -1,3 +1,8 @@
+# 0. 실행하기 
+
+```
+C:\Users\uintone\Downloads\react\React_Prac\my_react_project> npm run start
+```
 # 1. JSX문법
 ## html태그를 사용하는 방법
 ### class -> className ,onBlur 와 같이 카멜케이스로 작성한다. 

@@ -1,5 +1,8 @@
 import './App.css';
 import { Fragment } from 'react';
+import Dice from './Dice';
+import HandIcon from './HandIcon';
+import HandButton from './HandButton';
 
 const me = 'rock';
 let other = '';
@@ -22,6 +25,8 @@ function handleClick1(s){
 
 }
 function App() {
+  const handleClick = (value) => console.log(value);
+
   return (
     <div className="App">
        <Fragment>
@@ -31,6 +36,20 @@ function App() {
         <button onClick={() => handleClick1("scissor")}>가위</button>
         <button onClick={() => handleClick1("rock")}>바위</button>
         <button onClick={() => handleClick1("paper")}>보</button>
+        <hr></hr>
+        <Dice color="red" num={2}/>
+        <hr/>
+        <div style={{ background: 'blue' }}>
+          <HandIcon value="rock" />
+          <HandIcon value="scissor" />
+          <HandIcon value="paper" />
+        </div>
+        <hr/>
+        <div>
+        <HandButton value="rock" onClick={handleClick} />
+        <HandButton value="scissor" onClick={handleClick} />
+        <HandButton value="paper" onClick={handleClick} />
+        </div>
       </Fragment>
     </div>
   );
