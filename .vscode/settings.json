@@ -1,6 +1,6 @@
 {
     "terminal.integrated.fontWeightBold": "bold",
-    "terminal.integrated.fontSize": 20,
+    "terminal.integrated.fontSize": 16,
     "terminal.integrated.defaultProfile.windows": "Git Bash",
     "terminal.integrated.fontWeight": "normal",
     "window.zoomLevel": 1,
@@ -18,7 +18,7 @@
     /* 기본 Formatter 설정 */
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.snippetSuggestions": "top",
-    "editor.fontSize": 20,
+    "editor.fontSize": 16,
     "editor.renderWhitespace": "all",
     "editor.codeActionsOnSave": {
         // For ESLint
