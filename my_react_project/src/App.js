@@ -25,7 +25,8 @@ function handleClick1(s){
 }
 function App() {
   const handleClick = (value) => console.log(value);
-
+  const handleButtonClick = (value) => console.log(value);
+  const handleClearClick = () => console.log('처음부터');
   return (
     <div className="App">
        <Fragment>
@@ -56,6 +57,12 @@ function App() {
           <Button>던지기</Button>
         <Button>처음부터</Button>
         <Dice color="red" num={4} />
+        </div>
+        <div>
+          <Button onClick={handleClearClick}>처음부터</Button>
+          <HandButton value="rock" onClick={handleButtonClick} />
+          <HandButton value="scissor" onClick={handleButtonClick} />
+          <HandButton value="paper" onClick={handleButtonClick} />
         </div>
       </Fragment>
     </div>

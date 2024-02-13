@@ -1,8 +1,8 @@
 
-function Button({children}) {
+function Button({children, onClick}) {
 
 
-  return<button>{children}</button>;
+  return <button onClick={onClick}>{children}</button>;
 }
 
 export default Button;
