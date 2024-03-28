@@ -14,9 +14,15 @@ function App() {//JSX문법
   let num = [1,2]
   let [a,c]= [1,2];
 
+  //array특징 
+  let arr2 =[1,2,3];
+
+
   //함수
   function 함수1(){
     console.log("dd");
+
+  
   }
 
   return ( 
@@ -66,13 +72,40 @@ function App() {//JSX문법
         <button class="py-2 px-4 rounded-lg shadow-md text-white bg-blue-500"
         onClick={()=>{따봉변경(따봉+1)}}>
         👍
-      </button>
-      {따봉}
+        </button>
+        {따봉}
         <p>2월 17일 발행</p>
       </div>
-      
+      <div className="list border border-indigo-600 mb-5">
+        <h4>{글제목[2]}</h4>
+        <button class="py-2 px-4 rounded-lg shadow-md text-white bg-blue-500"
+        onClick={()=>{
+          let arr = [1,2,3]; // 이럼안됨 글제목의 은 같다고 인식되어 내용이 변경되지는 않음 >> reference data type
+          //...쓰기
+          //해결 copy를 만들고 
+          let copy =[...글제목];//독립적인 array사본이 만들어짐
+          copy[2] = "청국장"; 
+          글제목변경(copy);
+        }}>
+       글수정
+        </button>
+        <p>2월 17일 발행</p>
+      </div>
+      <Modal/>
+
+  
     </div>
+   
   );
 }
-
+//컴포넌트
+function Modal(){
+  return(
+    <div className='modal'>
+    <h4>모달</h4>
+    <p>날짜</p>
+    <p>상세내용</p>
+  </div>
+  )
+}
 export default App;
