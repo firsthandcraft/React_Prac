@@ -26,7 +26,7 @@ function App() {//JSX문법
   }
 
   return ( 
-    <div className="App"style={padding:'20px'}}>
+    <div className="App" style={{padding:'20px'}}>
       
       <hr/>
       <p style={{color:'red',fontSize:'20px'}}>변수쓰기</p>
