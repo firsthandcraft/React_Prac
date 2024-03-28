@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import './css/index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
@@ -12,7 +12,7 @@ function handleClick(){
 const root = ReactDOM.createRoot(document
 
 .getElementById('root'));
-root.render(
+root.render(//렌더
   <>
     <h1>나만의 {product}주문하기</h1>
     <img src={imgUrl} style={{ width: '200px' }}/>

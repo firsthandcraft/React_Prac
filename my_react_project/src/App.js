@@ -1,9 +1,9 @@
-import './App.css';
+import './css/App.css';
 import { Fragment } from 'react';
-import Dice from './Dice';
-import HandIcon from './HandIcon';
-import HandButton from './HandButton';
-import Button from './Button';
+import Dice from './component/Dice';
+import HandIcon from './component/HandIcon';
+import HandButton from './component/HandButton';
+import Button from './component/Button';
 
 const me = 'rock';
 let other = '';
