@@ -26,13 +26,13 @@ function App() {//JSX문법
   }
 
   return ( 
-    <div className="App">
+    <div className="App"style={padding:'20px'}}>
       
       <hr/>
       <p style={{color:'red',fontSize:'20px'}}>변수쓰기</p>
       <h4>{post}</h4>
       <br/>
-      <p style={{color:'red',fontSize:'20px'}}>변수쓰기</p>
+      <p style={{color:'red',fontSize:'20px'}}>데이터바인딩</p>
       <div>{글제목}</div>
       <br/>
       <p> 정리 :: 변수, 데이터 바인딩은 중괄호 &#123;&#125; </p>
@@ -52,6 +52,7 @@ function App() {//JSX문법
         <p>2월 17일 발행</p>
       </div>
       <div className="list border border-indigo-600 mb-5">
+      <p style={{color:'red',fontSize:'20px'}}>이벤트함수 : function.console</p>
         <h4>{글제목[1]}</h4>
         <button class="py-2 px-4 rounded-lg shadow-md text-white bg-blue-500"
         onClick={function(){console.log(1)}}>
@@ -60,6 +61,7 @@ function App() {//JSX문법
         <p>2월 17일 발행</p>
       </div>
       <div className="list border border-indigo-600 mb-5">
+      <p style={{color:'red',fontSize:'20px'}}>이벤트함수 : arrowfunction.console</p>
         <h4>{글제목[2]}</h4>
         <button class="py-2 px-4 rounded-lg shadow-md text-white bg-blue-500"
         onClick={()=>{console.log(1)}}>
@@ -68,6 +70,7 @@ function App() {//JSX문법
         <p>2월 17일 발행</p>
       </div>
       <div className="list border border-indigo-600 mb-5">
+        <p style={{color:'red',fontSize:'20px'}}>이벤트함수 :카운트 만들기</p>
         <h4>{글제목[2]}</h4>
         <button class="py-2 px-4 rounded-lg shadow-md text-white bg-blue-500"
         onClick={()=>{따봉변경(따봉+1)}}>
@@ -77,6 +80,7 @@ function App() {//JSX문법
         <p>2월 17일 발행</p>
       </div>
       <div className="list border border-indigo-600 mb-5">
+      <p style={{color:'red',fontSize:'20px'}}>이벤트함수 state변경 : reference data type 에대해</p>
         <h4>{글제목[2]}</h4>
         <button class="py-2 px-4 rounded-lg shadow-md text-white bg-blue-500"
         onClick={()=>{
@@ -102,6 +106,7 @@ function App() {//JSX문법
 function Modal(){
   return(
     <div className='modal'>
+    <p style={{color:'red',fontSize:'20px'}}>컴포넌트만들기</p>
     <h4>모달</h4>
     <p>날짜</p>
     <p>상세내용</p>
