@@ -1,7 +1,7 @@
 import './App.css';
 import { useState } from 'react';
 
-function App() {
+function App() {//JSX문법
   let post ='맞깁';
   //state 
   let [글제목,b]=useState('넘자코드추천') ; //Destructurring 문법
