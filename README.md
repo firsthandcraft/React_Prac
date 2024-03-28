@@ -8,7 +8,11 @@ cd blog
 npm run start
 ```
 
---
+app.js에 상단에 lint 기능끄기
+```javascript
+/* eslilnt-disable */
+```
+
 -- tailwind 설치
 ```
 npm install -D tailwindcss
@@ -31,4 +35,5 @@ App.css에 추가
 @tailwind components;
 @tailwind utilities;
 ```
+-- https://tailwindcss.com/docs/margin
 
