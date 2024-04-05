@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import First from './First';
 import Second from './Second';
 import Third from './Third';
+import Fourth from './Fourth';
 
 
 const root = ReactDOM.createRoot(document
@@ -14,9 +15,10 @@ root.render(//렌더
     <First />
     <Second />
     <Third />
+    <Fourth />
   </>
 );
-/** 아래와 같이도 가능 이것을 엘리먼트
+/** 아래와 같이도 가능 이것을 
 const element = <h1>안녕 리액트!</h1>;
 console.log(element);
 ReactDOM.render(element, document.getElementById('root')); */

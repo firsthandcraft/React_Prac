@@ -17,6 +17,10 @@ code {
   border:1px solid #000;
 }
 .contentTitle{color:blue;}
-.tip{padding:15px; background-color:#eee; color:#222;font-size:10px;}
+.tip{margin-top:20px; padding:15px; background-color:#eee; color:#222;font-size:10px;}
 .tip ul,.tip li{padding:0;margin:0;}
 .tip li{margin:8px 0;}
+
+.DiceBtn{background-color:orange;border:none;border-radius:10px;margin:2px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  }

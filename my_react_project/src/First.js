@@ -14,7 +14,7 @@ function First() {
     <button onClick={() => alert('확인')}>onClick 이벤트</button>
     <button onClick={handleClick}>오브젝트속성 console로 확인</button>
 
-    <div className="tidiv">
+    <div className="tip">
       <ul>
         <li>JSX작성시 속성명은 카멜 케이스로 작성 <br/>
             <i>onClick, onBlur, onFocus, onMouseDown, onMouseOver, tabIndex </i>
