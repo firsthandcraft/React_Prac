@@ -119,3 +119,10 @@ function Button({children, onClick}) {
 }
 export default Button;
 ```
+
+#### state
+
+01. import하기
+```javascript
+import React, { useState } from 'react';
+```

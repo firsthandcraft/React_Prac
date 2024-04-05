@@ -3,12 +3,12 @@ import React, { useState } from 'react';
 import HandButton from './component/HandButton';
 import Button from './component/Button';
 import Dice from './component/Dice';
-function Fifth() {
+function Eighth() {
   const handleButtonClick = (value) =>alert(value);
   const handleClearClick = () => alert('처음부터');
   return (
-    <div className="Fifth bundle">
-        <h3 id="title" className="contentTitle">05. chilren</h3>
+    <div className="Eighth bundle">
+        <h3 id="title" className="contentTitle">0. chilren</h3>
         <p>children배우기</p>
           {/** children사용전
            * <Button text="던지기"/>
@@ -30,4 +30,4 @@ function Fifth() {
   );
 }
 
-export default Fifth;
+export default Eighth;
