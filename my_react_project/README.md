@@ -4,7 +4,7 @@
 C:\Users\uintone\Downloads\react\React_Prac\my_react_project> npm run start
 ```
 # 1. JSX문법
-####  자바스크립트의 확장 문법
+####  자바스크립트의 확장 문법 , react를 사용하기 위해 만들어짐
 ## JS파일에 div로 감싸 html태그를 사용하는 방법
 ### class -> className ,onBlur 와 같이 카멜케이스로 작성한다. 
 ### label 태그의for  -> htmlFor로 작성 
@@ -18,8 +18,7 @@ C:\Users\uintone\Downloads\react\React_Prac\my_react_project> npm run start
         <h2>sdfsdf</h2>
       </Fragment>
 ```
-
-##### 이름없이도 사용가능하다.
+* 이름없이도 사용가능하다.
 ```javascript
    <>
         <h2>sdfsdf</h2>
@@ -80,6 +79,13 @@ function App() {
 }
 export default App;
 ```
+#### 엘리먼트 
+{$$typeof: Symbol(react.element), type: "h1", key: null, ref: null, props: {…}, …}
+이런 객체를 리액트 엘리먼트
+
+이 리액트 엘리먼트를 ReactDOM.render 함수의 아규먼트로 전달하게 되면, 리액트가 객체 형태의 값을 해석해서 HTML 형태로 브라우저에 띄워줌.
+
+리액트 엘리먼트는 리액트로 화면을 그려내는데 가장 기본적인 요소
 
 #### props
 :: 컴포넌트에 지정한 속성

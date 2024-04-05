@@ -1,50 +1,30 @@
-import './css/App.css';
 import { Fragment } from 'react';
+import React, { useState } from 'react';
 import Dice from './component/Dice';
 import HandIcon from './component/HandIcon';
 import HandButton from './component/HandButton';
 import Button from './component/Button';
 
-const me = 'rock';
-let other = '';
-function getResult(left, right) {
-  if (WINS[left] === right) return '승리';
-  else if (left === WINS[right]) return '패배';
-  return '무승부';
-}
-
-const WINS = {
-  rock: 'scissor',
-  scissor: 'paper',
-  paper: 'rock',
-};
-
-function handleClick1(s){
-  other = s;
-  console.log(s);
-}
-function App() {
+function Third() {
   const handleClick = (value) => console.log(value);
   const handleButtonClick = (value) => console.log(value);
   const handleClearClick = () => console.log('처음부터');
+  const [me, setMe] = useState(null);
+  const [result, setResult] = useState('');
+
   return (
-    <div className="App">
-       <Fragment>
-        <h1 id="title">가위바위보</h1>
-        <h2>{getResult(me,other)}</h2>
-        <p>{other}</p>
-        <button onClick={() => handleClick1("scissor")}>가위</button>
-        <button onClick={() => handleClick1("rock")}>바위</button>
-        <button onClick={() => handleClick1("paper")}>보</button>
-        <hr></hr>
+    <div className="Third bundle">
+        <h3 id="title" className="contentTitle">03. 컴포넌트만들기</h3>
+        <p>SVG이미지 가져오기</p>
         <Dice color="red" num={2}/>
-        <hr/>
-        <div style={{ background: 'blue' }}>
-          <p>컴포넌트개념</p>
+
+        <div style={{ background: 'skyblue' }}>
           <HandIcon value="rock" />
           <HandIcon value="scissor" />
           <HandIcon value="paper" />
         </div>
+
+
         <hr/>
         <div>
         <p>prop개념알기</p>
@@ -64,9 +44,8 @@ function App() {
           <HandButton value="scissor" onClick={handleButtonClick} />
           <HandButton value="paper" onClick={handleButtonClick} />
         </div>
-      </Fragment>
     </div>
   );
 }
 
-export default App;
+export default Third;
