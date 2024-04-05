@@ -37,6 +37,15 @@ App.css에 추가
 ```
 -- https://tailwindcss.com/docs/margin
 
+### 배운것
+ 
+* JSX문법
+* state
+* 함수 
+* Destructurring 문법에 대해
+* 컴포넌트
+
+
 ### 결과화면
 <img width="402" alt="스크린샷 2024-03-28 오후 4 03 45" src="https://github.com/firsthandcraft/React_Prac/assets/97497153/3c6c14e3-23d1-4c76-9543-09b37344b5e0">
 
