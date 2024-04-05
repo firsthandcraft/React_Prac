@@ -26,20 +26,6 @@ function Fourth() {
             </li>
           </ul>
         </div>
-
-
-        <div> 
-          <p>children배우기</p>
-          <Button>던지기</Button>
-        <Button>처음부터</Button>
-        <Dice color="red" num={4} />
-        </div>
-        <div>
-          <Button onClick={handleClearClick}>처음부터</Button>
-          <HandButton value="rock" onClick={handleButtonClick} />
-          <HandButton value="scissor" onClick={handleButtonClick} />
-          <HandButton value="paper" onClick={handleButtonClick} />
-        </div>
     </div>
   );
 }

@@ -89,7 +89,9 @@ export default App;
 
 #### props
 :: 컴포넌트에 지정한 속성
-```
+:: Properties의 약자
+* 컴포넌트에 속성을 지정해주면 각 속성이 하나의 객체로 모여서 컴포넌트를 정의한 함수의 첫 번째 파라미터로 전달
+```javascript
 import Dice from './Dice';
 function App() {
   return (
@@ -100,4 +102,20 @@ function App() {
 }
 export default App;
 ```
-
+#### children
+* 직관적으로 코드를 짤수 있다. 
+```javascript
+ {/** children사용전
+           * <Button text="던지기"/>
+           * <Button text="처음부터"/>
+          */}
+  <Button>던지기</Button>
+  <Button>처음부터</Button>
+```
+```javascript
+//Button 컴포넌트
+function Button({children, onClick}) {
+  return <button onClick={onClick}>{children}</button>;
+}
+export default Button;
+```
