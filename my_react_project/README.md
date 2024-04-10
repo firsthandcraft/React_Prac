@@ -189,3 +189,111 @@ export default App;
 // ...
 
 ```
+
+# 9. CSS적용
+https://create-react-app.dev/docs/adding-a-stylesheet/
+
+#### 01. 이미지 불러오기
+```javascript
+import diceImg from './assets/dice.png';
+
+function Dice() {
+  return <img src={diceImg} alt="주사위 이미지" />;
+}
+
+export default App;
+```
+#### 02. 인라인 스타일
+
+```javascript
+import diceImg from './assets/dice.png';
+
+const style = {
+  borderRadius: '50%',
+  width: '120px',
+  height: '120px',
+};
+
+function Dice() {
+  return <img style={style} src={diceImg} alt="주사위 이미지" />;
+}
+
+export default App;
+
+```
+#### 03. CSS 파일 불러오기
+```javascript
+import diceImg from './assets/dice.png';
+import './Dice.css';
+
+function Dice() {
+  return <img src={diceImg} alt="주사위 이미지" />;
+}
+
+export default App;
+```
+#### 04. 클래스네임 사용하기
+
+```javascript
+import diceImg from './assets/dice.png';
+import './Dice.css';
+
+function Dice({ className = '' }) {
+  const classNames = `Dice ${className}`;
+  return <img className={classNames} src={diceImg} alt="주사위 이미지" />;
+}
+
+export default App;
+
+```
+#### 001.템플릿 문자열 사용
+```javascript
+function Button({ isPending, color, size, invert, children }) {
+  const classNames = `Button ${isPending ? 'pending' : ''} ${color} ${size} ${invert ? 'invert' : ''}`;
+  return <button className={classNames}>{children}</button>;
+}
+
+export default Button;
+```
+#### 002. 배열 사용
+
+```javascript
+function Button({ isPending, color, size, invert, children }) {
+  const classNames = [
+    'Button',
+    isPending ? 'pending' : '',
+    color,
+    size,
+    invert ? 'invert' : '',
+  ].join(' ');
+  return <button className={classNames}>{children}</button>;
+}
+
+export default Button;
+```
+
+#### 003,classnames 라이브러리를 사용한 예
+```javascript
+import classNames from 'classnames';
+
+function Button({ isPending, color, size, invert, children }) {
+  return (
+    <button
+      className={classNames(
+        'Button',
+        isPending && 'pending',
+        color,
+        size,
+        invert && 'invert',
+      )}>
+     { children }
+   </button >
+  );
+}
+
+export default Button;
+
+```
+* classnames 은 NPM이라는 프로그램을 통해 설치
+ npm install classnames 후 import로 
+ NPM classnames 패키지: https://www.npmjs.com/package/classnames
