@@ -121,8 +121,71 @@ export default Button;
 ```
 
 #### state
-
+상태가 바뀔 때마다 화면을 새롭게 그려내는 방식으로 동작
+리액트에서 state를 만들고, state를 바꾸기 위해서는 일단 useState라는 함수를 활용해야 합니다.
 01. import하기
 ```javascript
 import React, { useState } from 'react';
+  const [num, setNum] = useState(1);
+  //첫 번째 요소가 바로 state이고, 두 번째 요소가 이 state를 바꾸는 setter 함수
+  //참고로 위 코드에서도 볼 수 있듯 첫 번째 변수는 원하는 state의 이름(num)을 지어주고, 두 번째 변수에는 state 이름 앞에 set을 붙인 다음 카멜 케이스로 이름을 지어주는 것(setNum)이 일반적
+  //보통 이렇게 Destructuring 문법으로 작성
+```
+```javascript
+import { useState } from 'react';
+import Button from './Button';
+import Dice from './Dice';
+
+function App() {
+  const [num, setNum] = useState(1);
+
+  const handleRollClick = () => {
+    setNum(3); // num state를 3으로 변경!
+  };
+
+  const handleClearClick = () => {
+    setNum(1); // num state를 1로 변경!
+  };
+
+  return (
+    <div>
+      <Button onClick={handleRollClick}>던지기</Button>
+      <Button onClick={handleClearClick}>처음부터</Button>
+      <Dice color="red" num={num} />
+    </div>
+  );
+}
+
+export default App;
+
+```
+
+02. 참조형 State
+ 자료형은 크게 기본형(Primitive type)과 참조형(Reference type)로 구분
+ ```javascript
+ // ... 
+
+  const [gameHistory, setGameHistory] = useState([]);
+
+  const handleRollClick = () => {
+    const nextNum = random(6);
+    gameHistory.push(nextNum);
+    setGameHistory(gameHistory); // state가 제대로 변경되지 않는다!
+  };
+
+// ...
+ ```
+ * gameHistory state는 배열 값 자체를 가지고 있는 게 아니라 그 배열의 주솟값을 참조하기 때문에 변경안됨 -==> 새로운 참조형 값을 만들어 state를 변경 > spread문법사용하기 
+```javascript
+// ... 
+
+  const [gameHistory, setGameHistory] = useState([]);
+
+  const handleRollClick = () => {
+    const nextNum = random(6);
+    setGameHistory([...gameHistory, nextNum]); // state가 제대로 변경된다!
+  };
+
+// ...
+
 ```

@@ -11,6 +11,6 @@ const DICE_IMAGES = {
 function HandIcon(props){
   const src = DICE_IMAGES[props.value];
   const alt = DICE_IMAGES[props];
-  return <img src={src} alt={alt}/>;
+  return <img className='DiceBtn' src={src} alt={alt}/>;
 }
 export default HandIcon;
