@@ -8,3 +8,5 @@
 [문법기본](https://github.com/firsthandcraft/React_Prac/tree/codeIt)
 
 [주사위게임](https://github.com/firsthandcraft/React_Prac/tree/diceGame)
+
+[가위바위보게임](https://github.com/firsthandcraft/React_Prac/tree/RockPaperScissors)
