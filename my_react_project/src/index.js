@@ -9,6 +9,7 @@ import Fourth from './Fourth';
 import Fifth from './Fifth';
 import Sixth from './Sixth';
 import Seventh from './Seventh';
+import Eighth from './Eighth';
 
 
 const root = ReactDOM.createRoot(document
@@ -22,6 +23,7 @@ root.render(//렌더
     <Fifth />
     <Sixth />
     <Seventh/>
+    <Eighth/>
   </>
 );
 /** 아래와 같이도 가능 이것을 
