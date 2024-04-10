@@ -25,7 +25,7 @@ C:\Users\uintone\Downloads\react\React_Prac\my_react_project> npm run start
       </>
 ```
 
-#### JSX작성시 속성명은 카멜 케이스로 작성
+# 3. JSX작성시 속성명은 카멜 케이스로 작성
 이런 속성들은 모두 onClick, onBlur, onFocus, onMouseDown, onMouseOver, tabIndex 
 ```javascript
 import ReactDOM from 'react-dom';
@@ -65,7 +65,7 @@ ReactDOM.render(
 );
 ```
 
-#### 컴포넌트 
+# 4. 컴포넌트 
 -- 장점 :: 하나의 태그처럼 활용
 -- 유의 ::  첫 글자를 대문자로 작성
 ``` javascript
@@ -79,7 +79,7 @@ function App() {
 }
 export default App;
 ```
-#### 엘리먼트 
+# 5. 엘리먼트 
 {$$typeof: Symbol(react.element), type: "h1", key: null, ref: null, props: {…}, …}
 이런 객체를 리액트 엘리먼트
 
@@ -87,7 +87,7 @@ export default App;
 
 리액트 엘리먼트는 리액트로 화면을 그려내는데 가장 기본적인 요소
 
-#### props
+# 6. props
 :: 컴포넌트에 지정한 속성
 :: Properties의 약자
 * 컴포넌트에 속성을 지정해주면 각 속성이 하나의 객체로 모여서 컴포넌트를 정의한 함수의 첫 번째 파라미터로 전달
@@ -102,7 +102,7 @@ function App() {
 }
 export default App;
 ```
-#### children
+# 7. children
 * 직관적으로 코드를 짤수 있다. 
 ```javascript
  {/** children사용전
@@ -120,7 +120,7 @@ function Button({children, onClick}) {
 export default Button;
 ```
 
-#### state
+# 8. state
 상태가 바뀔 때마다 화면을 새롭게 그려내는 방식으로 동작
 리액트에서 state를 만들고, state를 바꾸기 위해서는 일단 useState라는 함수를 활용해야 합니다.
 01. import하기
