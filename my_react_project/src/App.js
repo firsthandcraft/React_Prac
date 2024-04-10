@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import HandButton from './component/HandButton';
 import Button from './component/Button';
+import Score from './component/Score';
 import HandIcon from './component/HandIcon';
-import Dice from './component/Dice';
 import { compareHand, generateRandomHand } from './js/utils';
-
+import './css/App.css'
 const INITIAL_VALUE = 'rock';
 
 function getResult(me, other) {
@@ -14,7 +14,7 @@ function getResult(me, other) {
   return '무승부';
 }
 
-function Ninth() {
+function App() {
   const [hand, setHand] = useState(INITIAL_VALUE);
   const [otherHand, setOtherHand] = useState(INITIAL_VALUE);
   const [gameHistory, setGameHistory] = useState([]);
@@ -49,22 +49,32 @@ function Ninth() {
   };
 
   return (
-    <div className="Ninth bundle">
-    <h3 id="title" className="contentTitle">9.승부기록만들기</h3>
-   
+    <div className="App bundle">
+      <h1 class="App-heading">가위바위보</h1>
       <Button onClick={handleClearClick}>처음부터</Button>
-      <div>
-        {score} : {otherScore}
+      <div className="App-scores">
+        <Score num={score} name="나" />
+        <div class="App-versus">:</div>
+        <Score num={otherScore} name="상대"/>
+      </div>
+   
+      
+      <div className="Box App-box">
+        <div className="App-hands">
+          <HandIcon value={hand} />
+          <div className="App-versus">VS</div>
+          <HandIcon value={otherHand} />
+        </div>
       </div>
       <div>
-        <HandIcon value={hand} />
-        VS
-        <HandIcon value={otherHand} />
+      <div className="App-bet">
+        <span>배점</span><input type="number" value={bet} min={1} max={9} onChange={handleBetChange}></input><span>배</span>
       </div>
-      <div>
-        <input type="number" value={bet} min={1} max={9} onChange={handleBetChange}></input>
       </div>
-      <p>승부 기록: {gameHistory.join(', ')}</p>
+      <div className="App-history">
+            <h2>승부기록</h2>
+            <p>{gameHistory.join(', ')}</p>
+          </div>
       <div>
         <HandButton value="rock" onClick={handleButtonClick} />
         <HandButton value="scissor" onClick={handleButtonClick} />
@@ -74,5 +84,5 @@ function Ninth() {
   );
 }
 
-export default Ninth;
+export default App;
 
