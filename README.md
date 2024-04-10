@@ -12,4 +12,5 @@ C:\Users\uintone\Downloads\react\React_Prac>npm install
 ### 4. 컴포넌트문법
 ### 5. Props
 
-![Uploading localhost_3000_.png…]()
+![localhost_3000_](https://github.com/firsthandcraft/React_Prac/assets/97497153/e3c06a03-3cfa-49be-96a9-34ad5ee5c879)
+
