@@ -1,0 +1,18 @@
+.headerWrap {
+    background-color: darkblue;
+}
+.tabWrap {
+    background-color: rgb(92, 92, 204);
+}
+.tabWrap li i {
+    background-color: rgb(195, 195, 240);
+}
+.tabButtonWrap {
+    background-color: rgb(64, 64, 132);
+}
+.contentWrap {
+    background-color: rgb(47, 47, 185);
+}
+.tagWrap {
+    background-color: cornflowerblue;
+}

@@ -21,19 +21,20 @@ function TabMenu() {
     <>
       <div>
         <h3>{reactDescriptions[getRandomInt(2)]}</h3>
-
         <p>this is TabMenu PROPS</p>
-        <p>첫번째 방법</p>
+        <h1>첫번째 방법</h1>
         <ul>
+          <li><i>직접 배열에서 가져오기</i> </li>
           <CoreContent
           title={CORE_CONCEPTS[0].title}
           content ={CORE_CONCEPTS[0].description}
           />
+          <li><i>...으로 불러오기</i></li>
           <CoreContent
           {... CORE_CONCEPTS[1]}
           />
         </ul>
-        <p>두번째 방법</p>
+        <h1>두번째 방법</h1>
         <ul>
           {contentList.map((item, index) => (
             <CoreContent
@@ -43,7 +44,13 @@ function TabMenu() {
             />
           ))}
         </ul>
-        <h2>Tab Menu만들기</h2>
+        <h1>세번째 방법</h1>
+          <ul> {contentList.map((item,index) => (
+            <CoreContent key={index}
+             {...item}
+            />
+          ))}
+          </ul>
     </div>
     </>
   )

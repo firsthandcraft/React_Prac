@@ -1,7 +1,4 @@
-
-
 function Nav() {
-
   return (
     <>
       <div>
