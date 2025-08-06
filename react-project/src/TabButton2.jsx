@@ -4,7 +4,6 @@ export default function TabButton2({label}){
     console.log('HelloWorld');
   }
   return <li>
-   <button onClick={clickHandler}>{label}
-    </button>
+   <button onClick={clickHandler}>{label}</button>
   </li>
 }

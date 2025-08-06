@@ -3,6 +3,7 @@ import './App.css'
 import './indfo.css'
 import Header from './component/Header'
 import Nav from './component/Nav'
+import CoreConcepts from './component/CoreConcepts'
 import TabMenu from './component/TabMenu'
 import TabButton3 from './component/TabButton3'
 import TabButton from './TabButton'
@@ -118,7 +119,7 @@ function App() {
 
           <div className="contentWrap">
             <h3>리스트 동적 출력</h3>
-
+            <CoreConcepts/>
 
           </div>
       </main>
