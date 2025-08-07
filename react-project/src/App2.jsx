@@ -1,12 +1,15 @@
 import { useState } from 'react'
-import './App.css'
+import './css/index.css'
+
+import './css/App.css'
+import { EXAMPLES } from './js/data2';
 import Header from './component/Header'
 import Nav from './component/Nav'
 import CoreConcepts from './component/CoreConcepts'
 import TabButton3 from './component/TabButton3'
-import TabButton from './TabButton'
-import TabButton2 from './TabButton2'
-import { EXAMPLES } from './js/data2';
+import TabButton from './component/TabButton'
+import TabButton2 from './component/TabButton2'
+
 
 
 function App() {
