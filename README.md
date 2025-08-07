@@ -11,7 +11,7 @@ main.jsx에서 render 내용 바꾸기
   ![App2](./react-project/src/img/app2.png)
 
   - Calculator.jsx :: 실습해보는 코드 계산기
-  ![Calculator](./react-project/img/my-logo.png)
+  ![Calculator](./react-project/src/img/calculator.png)
 
 
 
