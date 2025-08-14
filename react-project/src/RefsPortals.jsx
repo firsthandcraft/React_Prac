@@ -1,0 +1,22 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './css/refsPortals.css';
+import Player from './component/Player.jsx';
+import TimerChallenge from './component/TimerChallenge.jsx';
+
+
+function RefsPortals(params) {
+ return (
+  <>
+        <Player />
+      <div id="challenges">
+        <TimerChallenge title="Easy" targetTime ={1}></TimerChallenge>
+        <TimerChallenge title="Not easy" targetTime ={5}></TimerChallenge>
+        <TimerChallenge title="Getting tough" targetTime ={10}></TimerChallenge>
+        <TimerChallenge title="Pros only" targetTime ={15}></TimerChallenge>
+      </div>
+  </>
+ );
+}
+
+export default RefsPortals

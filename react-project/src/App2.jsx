@@ -2,13 +2,15 @@ import { useState } from 'react'
 import './css/index.css'
 
 import './css/App.css'
-import { EXAMPLES } from './js/data2';
 import Header from './component/Header'
 import Nav from './component/Nav'
 import CoreConcepts from './component/CoreConcepts'
 import TabButton3 from './component/TabButton3'
 import TabButton from './component/TabButton'
 import TabButton2 from './component/TabButton2'
+import Examples from './component/Examples'
+import { EXAMPLES } from './js/data2';
+
 
 
 
@@ -42,7 +44,7 @@ function App() {
         </div>
       <main>
         <CoreConcepts/>
-
+        <Examples />
         <section id="examples">
         <h2>Examples</h2>
         <menu>
