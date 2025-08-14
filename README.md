@@ -1,6 +1,9 @@
 #  React 스터디 노트입니다.
-
+https://github.com/firsthandcraft/React_Prac/blob/main/README.md
 ### 유데미,유튜브 , 코드잇, 책, 오프라인 스터디 등을 통하여 배웠습니다.
+
+
+## [공부내용은 WIKI를 참조해주세요](https://github.com/firsthandcraft/React_Prac/wiki)
 
 ## 스터디 목록 (브랜치 참고)
 [블로그기본](https://github.com/firsthandcraft/React_Prac/tree/coddingApple)
