@@ -5,9 +5,10 @@ export default function FormLogin() {
   const [enteredPassword,setEnteredPassword] = useState('');
   const [enteredValues,setEnteredValues] = useState({
     email: '',
-    password: ''
+    password: '',
+    name: '',
+    age: ''
   });
-  const useName = useRef();
 
 
   function handleEmailChange(event) {
@@ -37,6 +38,22 @@ export default function FormLogin() {
     console.log(value);
   }
 
+  //   유효성
+  const emailIsValid = enteredValues.email !== '' && !enteredValues.email.includes('@');
+  //유효성 blur
+  const [didEdit,setDidEdit] = useState({
+    name: false,
+    age: false
+  });
+  const useName = useRef();
+  function handleBlur(identifier) {
+      setDidEdit(prevEdit => ({
+        ...prevEdit,
+        [identifier]: true,
+      }));
+  }
+  const nameIsValid = didEdit.name && enteredValues.name.trim() === '';
+
   return (
     <div>
     <form onSubmit={handleSubmit}>
@@ -49,6 +66,7 @@ export default function FormLogin() {
             onChange={(e)=>handleInputChange('email', e.target.value)}
             value={enteredValues.email.value}
           />
+          <div className="control-error">{emailIsValid && <p>please enter email address</p>}</div>
         </div>
 
         <div className="control no-margin">
@@ -63,14 +81,17 @@ export default function FormLogin() {
         <div className="control no-margin">
           <label htmlFor="name">Name</label>
           <input id="name" type="string" name="name"
+            onBlur={() => handleBlur('name')}
+            value={enteredValues.name.value}
           ref ={useName}
           />
+          <div className="control-error">{nameIsValid && <p>please type name</p>}</div>
         </div>
 
         <div className="control no-margin">
           <label htmlFor="age">age</label>
           <input id="age" type="number" name="age"
-
+            onBlur={() => handleBlur('age')}
           />
         </div>
       </div>

@@ -1,10 +1,10 @@
 import React from 'react'
-import Signup from './Signup'
+// import Signup from './Signup'
 
 function StateLogin() {
   return (
     <div>
-      <Signup/>
+      {/* <Signup/> */}
     </div>
   )
 }

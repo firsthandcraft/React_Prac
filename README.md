@@ -13,7 +13,8 @@ main.jsx에서 render 내용 바꾸기
   - Calculator.jsx :: 실습해보는 코드 계산기
   ![Calculator](./react-project/src/img/calculator.png)
 
-
+  - FormTwo.jsx :: form 양식 데이터 다루기
+  ![FormTwo](./react-project/src/img/form.png)
 
 ### 단축키
 - rfce ::  react function export componemt
@@ -620,17 +621,12 @@ onClose={onReset}
 ## FORM 처리 방식
 
 ### useRef와 useState의 차이
-input 태그에 어느것을 쓰는게 좋을까>??
 
-| 상황                                        | 추천         |
-| ----------------------------------------- | ---------- |
-| 입력값을 즉시 화면에 표시하거나 form validation이 필요한 경우 | `useState` |
-| 입력값을 렌더링에 반영할 필요 없고, 단순 확인/포커스/외부 API 참조용 | `useRef`   |
+https://github.com/firsthandcraft/React_Prac/wiki/from-%EC%96%91%EC%8B%9D-%EC%A0%9C%EC%9E%91#reset
 
-useState = UI와 연동되는 상태 관리
+### reset
+
+https://github.com/firsthandcraft/React_Prac/wiki/from-%EC%96%91%EC%8B%9D-%EC%A0%9C%EC%9E%91#reset
 
 
-useRef = UI와 상관없는 값 저장, DOM 접근용
-useRef단점, input 하나하나 다 일일히 연결해야함
-
-### preventDefault
+### 

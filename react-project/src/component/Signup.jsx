@@ -1,13 +1,16 @@
 export default function Signup() {
   function hadleSubmit(event) {
     event.preventDefault(); //브라우저에서 기본으로 수행되는 동작을 막는 메서드
-    const fd = new FormData(event.target);
+    const fd = new FormData(event.target);//input 태그에 name 속성이 있어야 FormData로 가져올 수 있다.
     const acquisitionChannel = fd.getAll('acquisition'); //이벤트 타겟에서 acquisition을 가져옴
     const data= Object.fromEntries(fd.entries()); //FormData 객체를 일반 객체로 변환
     fd.get("email"); //이벤트 타겟에서 email을 가져옴
     data.acquisitionChannel= acquisitionChannel; //acquisitionChannel을 data 객체에 추가 다중질문에 대해 배열로 받는다.
     console.log(data);
     console.log(acquisitionChannel);
+    //reset시
+    // email.current.value = ""; //input 태그의 value를 초기화
+    event.target.reset(); //폼을 초기화
   }
   return (
     <form onSubmit={hadleSubmit}>
