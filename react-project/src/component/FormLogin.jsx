@@ -9,6 +9,7 @@ export default function FormLogin() {
     name: '',
     age: ''
   });
+  const [passwordAreNotEqual, setPasswordAreNotEqual] = useState(false);
 
 
   function handleEmailChange(event) {
@@ -28,6 +29,16 @@ export default function FormLogin() {
     //ref의 값을 참조할때
     const enteredName= useName.current.value;
     console.log("Name:", enteredName);
+
+    //d우ㅠ효성
+      const fd = new FormData(event.target);
+      const data = Object.fromEntries(fd.entries());
+      console.log("FormData:", data);
+      if(data.password !== data['test2']){
+        setPasswordAreNotEqual(true);
+        return;
+      }
+
   }
 
   function handleInputChange(identifier, value) {
@@ -53,6 +64,9 @@ export default function FormLogin() {
       }));
   }
   const nameIsValid = didEdit.name && enteredValues.name.trim() === '';
+
+  //
+
 
   return (
     <div>
@@ -93,6 +107,13 @@ export default function FormLogin() {
           <input id="age" type="number" name="age"
             onBlur={() => handleBlur('age')}
           />
+        </div>
+
+        <div className="control no-margin">
+          <label htmlFor="test2">password confirm</label>
+          <input id="test2" type="string" name="test2"
+          />
+          <div className="control-error">{passwordAreNotEqual && <p>password must match</p>}</div>
         </div>
       </div>
       <p className="form-actions">

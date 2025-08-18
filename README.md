@@ -15,6 +15,10 @@ main.jsx에서 render 내용 바꾸기
 
   - FormTwo.jsx :: form 양식 데이터 다루기
   ![FormTwo](./react-project/src/img/form.png)
+  useInput.js 로 함수나누고 컴포넌트 공통화 하기
+  ![FormTwo](./react-project/src/img/login.png)
+
+  - FormThree.jsx :: form 양식 데이터 다루기
 
 ### 단축키
 - rfce ::  react function export componemt
@@ -629,4 +633,8 @@ https://github.com/firsthandcraft/React_Prac/wiki/from-%EC%96%91%EC%8B%9D-%EC%A0
 https://github.com/firsthandcraft/React_Prac/wiki/from-%EC%96%91%EC%8B%9D-%EC%A0%9C%EC%9E%91#reset
 
 
-### 
+### TypeScript설치
+
+npx create-react-app my-app --template typescript
+
+
