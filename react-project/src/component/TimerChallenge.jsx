@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, use } from 'react';
 import ResultModal from "./ResultModal.jsx";
 
-function TimerChallenge({title,targetTime}) {
+function TimerChallenge({title,targetTime}) {``
   const [timerExpired, setTimerExpired] = useState(false);
   const timer = useRef(null);
   const dialog = useRef(null);
